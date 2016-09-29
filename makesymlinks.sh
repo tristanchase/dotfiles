@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim zshrc oh-my-zsh solarized"    # list of files/folders to symlink in homedir
+files="bashrc vimrc vim zshrc solarized"    # list of files/folders to symlink in homedir
 
 ##########
 

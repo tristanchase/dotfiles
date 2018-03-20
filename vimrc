@@ -120,6 +120,11 @@ set encoding=utf-8
 vnoremap . :norm.<CR>
 " set spell spellang=en_us "throws error msg on startup
 
+" Frome lukesmith.xyz:  Splits open at the bottom and right, which is
+" non-retarded, unlike vim defaults.
+ 	set splitbelow
+	set splitright
+
 " Pathogen for installing plugins
 execute pathogen#infect()
  

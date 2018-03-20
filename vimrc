@@ -98,7 +98,8 @@ if !exists(":DiffOrig")
 endif
 
 nnoremap <Space> <PageDown>
-nnoremap _ <PageUp> 
+nnoremap _ <PageUp> # TODO Fix this (would like <Shift><Space>)
+nnoremap <Return> o
 
 set number
 

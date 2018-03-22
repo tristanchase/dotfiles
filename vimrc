@@ -101,10 +101,10 @@ if !exists(":DiffOrig")
 endif
 
 " Silly little mappings that make my life easier ;)
-inoremap jk <ESC> " For nicer exit from Insert Mode
-nnoremap <Space><Space> <PageDown>L " For paging down through file
-nnoremap <Space>k <PageUp>H " For paging up through file
-nnoremap <Return> o " Puts you on a new line in Insert Mode
+inoremap jk <ESC> 
+nnoremap <Space><Space> <PageDown>L 
+nnoremap <Space>k <PageUp>H 
+nnoremap <Return> o 
 
 set number
 

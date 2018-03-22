@@ -18,6 +18,9 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Pathogen for installing plugins
+execute pathogen#infect()
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -97,11 +100,22 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-nnoremap <Space> <PageDown>
-nnoremap _ <PageUp> # TODO Fix this (would like <Shift><Space>)
+nnoremap <Space> <PageDown>L
+nnoremap <S-Space> <PageUp> # TODO Fix this (would like <Shift><S-Space>)
 nnoremap <Return> o
 
 set number
+
+""From  https://shapeshed.com/vim-netrw/ Make netrw work like NERDtree.
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 25
+"augroup ProjectDrawer
+"	  autocmd!
+"	    autocmd VimEnter * :Vexplore
+"    augroup END
 
 " These may be useful for working with LaTeX.
 set wrap
@@ -121,13 +135,11 @@ set encoding=utf-8
 vnoremap . :norm.<CR>
 " set spell spellang=en_us "throws error msg on startup
 
-" Frome lukesmith.xyz:  Splits open at the bottom and right, which is
+" From lukesmith.xyz:  Splits open at the bottom and right, which is
 " non-retarded, unlike vim defaults.
  	set splitbelow
 	set splitright
 
-" Pathogen for installing plugins
-execute pathogen#infect()
  
 " Solarized colorscheme
 set nocompatible                                         
@@ -142,3 +154,4 @@ set cursorline
 set colorcolumn=80
 call togglebg#map("<F5>")
 
+" TODO Clean up this file! 

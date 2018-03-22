@@ -100,13 +100,16 @@ if !exists(":DiffOrig")
 		  \ | wincmd p | diffthis
 endif
 
-nnoremap <Space> <PageDown>L
-nnoremap <S-Space> <PageUp> # TODO Fix this (would like <Shift><S-Space>)
-nnoremap <Return> o
+" Silly little mappings that make my life easier ;)
+inoremap jk <ESC> " For nicer exit from Insert Mode
+nnoremap <Space><Space> <PageDown>L " For paging down through file
+nnoremap <Space>k <PageUp>H " For paging up through file
+nnoremap <Return> o " Puts you on a new line in Insert Mode
 
 set number
 
-""From  https://shapeshed.com/vim-netrw/ Make netrw work like NERDtree.
+"" From  https://shapeshed.com/vim-netrw/ Make netrw work like NERDtree.
+"" This didn't work the way I thought it would...
 "let g:netrw_banner = 0
 "let g:netrw_liststyle = 3
 "let g:netrw_browse_split = 4
@@ -129,7 +132,6 @@ filetype indent on
 let g:tex_flavor='latex'
 
 " From danielmiessler.com: Remap your leader key
-inoremap jk <ESC>
 let mapleader=","
 set encoding=utf-8
 vnoremap . :norm.<CR>

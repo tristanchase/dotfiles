@@ -101,10 +101,12 @@ if !exists(":DiffOrig")
 endif
 
 " Silly little mappings that make my life easier ;)
-inoremap jk <ESC> 
-nnoremap <Space><Space> <PageDown>L 
-nnoremap <Space>k <PageUp>H 
-nnoremap <Return> o 
+let mapleader = ","
+inoremap jk <ESC>
+nnoremap <Space><Space> <PageDown>L
+nnoremap <Space>k <PageUp>H
+nnoremap <Return> o
+nnoremap <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 set number
 
@@ -132,7 +134,6 @@ filetype indent on
 let g:tex_flavor='latex'
 
 " From danielmiessler.com: Remap your leader key
-let mapleader=","
 set encoding=utf-8
 vnoremap . :norm.<CR>
 " set spell spellang=en_us "throws error msg on startup
@@ -142,18 +143,18 @@ vnoremap . :norm.<CR>
  	set splitbelow
 	set splitright
 
- 
+
 " Solarized colorscheme
-set nocompatible                                         
-set t_Co=256                                                
+set nocompatible
+set t_Co=256
 let g:solarized_termcolors=256
-call pathogen#infect()                                     
-syntax on                                                  
-set background=dark " dark | light "                       
-colorscheme solarized                                      
+call pathogen#infect()
+syntax on
+set background=dark " dark | light "
+colorscheme solarized
 filetype plugin on
 set cursorline
 set colorcolumn=80
 call togglebg#map("<F5>")
 
-" TODO Clean up this file! 
+" TODO Clean up this file!

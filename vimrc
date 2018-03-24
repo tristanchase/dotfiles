@@ -107,7 +107,8 @@ nnoremap <Space><Space> <PageDown>L
 nnoremap <Space>k <PageUp>H
 nnoremap <Return> o
 " Find and remove trailing whitespace
-nnoremap <leader>w :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <Space>ws /\s\+$<CR>
+nnoremap <Space>wd :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 set number
 

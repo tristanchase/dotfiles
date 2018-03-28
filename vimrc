@@ -101,11 +101,11 @@ if !exists(":DiffOrig")
 endif
 
 " Silly little mappings that make my life easier ;)
-let mapleader = ","
 inoremap jk <ESC>
 nnoremap <Space><Space> <PageDown>L
 nnoremap <Space>k <PageUp>H
 nnoremap <Return> o
+nnoremap <Space>gf :vsp<CR>gf
 " Find and remove trailing whitespace
 nnoremap <Space>ws /\s\+$<CR>
 nnoremap <Space>wd :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>

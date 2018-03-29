@@ -105,8 +105,14 @@ inoremap jk <ESC>
 nnoremap <Space><Space> <PageDown>L
 nnoremap <Space>k <PageUp>H
 nnoremap <Return> o
-nnoremap <Space>gf :vsp<CR>gf
-" Find and remove trailing whitespace
+nnoremap <Space>so :source $MYVIMRC<CR>
+    " Open the file (on line number) in vertical split
+nnoremap <Space>gf :vsp<CR>gF
+    " Insert the date in YYYY-MM-DD Day format and insert two lines
+nnoremap <Space>da :r !date +\%F" "\%a<CR>o<CR>
+    " Insert the time in HH:MM format
+nnoremap <Space>ti :r !date +\%R<CR>
+    " Find and remove trailing whitespace
 nnoremap <Space>ws /\s\+$<CR>
 nnoremap <Space>wd :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 

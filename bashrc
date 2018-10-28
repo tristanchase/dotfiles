@@ -82,7 +82,7 @@ alias ll='ls --color=always -alF | less -R'
 alias la='ls --color=always -A | less -R'
 alias l='ls --color=always -CF | less -R'
 alias lh='ls --color=always -lasth | less -R'
-alias t='todo.sh -d /home/tristanc/todo.txt-cli/todo.cfg'
+alias t='todo.sh -d $HOME/todo.txt-cli/todo.cfg'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -105,4 +105,4 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Path modifications
-PATH=$PATH:"/home/tristanc/todo.txt-cli/"
+PATH=$PATH:"$HOME/todo.txt-cli/"

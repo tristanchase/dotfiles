@@ -7,7 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="mytheme"
 
-# Example aliases
+# Example aliases (my aliases are defined in ~/.oh-my-zsh/lib/misc.zsh TMC)
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 

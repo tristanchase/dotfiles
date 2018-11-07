@@ -1,3 +1,21 @@
+" An example for a vimrc file.
+"
+" Maintainer:	Bram Moolenaar <Bram@vim.org>
+" Last change:	2011 Apr 15
+"
+" To use it, copy it to
+"     for Unix and OS/2:  ~/.vimrc
+"	      for Amiga:  s:.vimrc
+"  for MS-DOS and Win32:  $VIM\_vimrc
+"	    for OpenVMS:  sys$login:.vimrc
+
+" When started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
+
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
 set nocompatible
 
 " Pathogen for installing plugins
@@ -6,14 +24,20 @@ execute pathogen#infect()
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set backup		" keep a backup file
-set backupdir=~/.vim/tmp//,.
-set directory=~/.vim/tmp//,.
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file
+  set backupdir=~/.vim/tmp//,.
+  set directory=~/.vim/tmp//,.
+endif
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
+" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+" let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -97,10 +121,10 @@ set number
 "" From  https://shapeshed.com/vim-netrw/ Make netrw work like NERDtree.
 "" This didn't work the way I thought it would...
 "let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
+"let g:netrw_liststyle = 2
 let g:netrw_browse_split = 2
 "let g:netrw_altv = 1
-"let g:netrw_winsize = 25
+let g:netrw_winsize = 25
 "augroup ProjectDrawer
 "	  autocmd!
 "	    autocmd VimEnter * :Vexplore
@@ -112,9 +136,9 @@ set linebreak
 set nolist
 set textwidth=0
 set wrapmargin=0
-"filetype plugin on
+filetype plugin on
 set grepprg=grep\ -nH\ $*
-"filetype indent on
+filetype indent on
 let g:tex_flavor='latex'
 
 " From danielmiessler.com: Remap your leader key
@@ -124,18 +148,19 @@ vnoremap . :norm.<CR>
 
 " From lukesmith.xyz:  Splits open at the bottom and right, which is
 " non-retarded, unlike vim defaults.
-set splitbelow
-set splitright
+ 	set splitbelow
+	set splitright
 
 
 " Solarized colorscheme
+set nocompatible
 set t_Co=256
 let g:solarized_termcolors=256
 call pathogen#infect()
 syntax on
 set background=dark " dark | light "
 colorscheme solarized
-"filetype plugin on
+filetype plugin on
 set cursorline
 set colorcolumn=80
 call togglebg#map("<F5>")

@@ -80,10 +80,11 @@ endif
 inoremap jk <ESC>
 nnoremap <Space><Space> <PageDown>L
 nnoremap <Space>k <PageUp>H
-nnoremap <Return> o
+"nnoremap <Return> o
 nnoremap <Space>so :source $MYVIMRC<CR>
     " Open the file (on line number) in vertical split
 nnoremap <Space>gf :vsp<CR>gF
+nnoremap <Return> :vsp<CR>gF
     " Insert the date in YYYY-MM-DD Day format and insert two lines
 nnoremap <Space>da :r !date +\%F" "\%a<CR>o<CR>
     " Insert the time in HH:MM format

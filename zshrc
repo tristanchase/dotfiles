@@ -53,6 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 export PATH="$PATH:$HOME/.vim/bundle/vim-live-latex-preview/bin" #For viewing LaTeX changes on the fly (http://lukesmith.xyz/latex.html)
+export GTDDIR="$HOME/gtd"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions

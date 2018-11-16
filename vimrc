@@ -16,7 +16,7 @@ set incsearch		" do incremental searching
 
 
 " Don't use Ex mode, use Q for formatting
-map Q gq
+"map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -80,6 +80,7 @@ endif
 inoremap jk <ESC>
 nnoremap <Space><Space> <PageDown>L
 nnoremap <Space>k <PageUp>H
+map Q :q!
 "nnoremap <Return> o
 nnoremap <Space>so :source $MYVIMRC<CR>
     " Open the file (on line number) in vertical split

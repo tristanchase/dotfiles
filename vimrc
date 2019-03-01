@@ -86,6 +86,9 @@ nnoremap <Space>j <PageDown>L
 map Q :q!
 nnoremap <Space>so :source $MYVIMRC<CR>
 
+" Can't always use CTRL-W (esp. when working from Chromebook) #map
+nnoremap <Space>wc :winc 
+
 " Show mappings in this file
 nnoremap <Space>kb :vne<CR>:r !grep map $HOME/.vimrc<CR>
 

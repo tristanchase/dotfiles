@@ -20,7 +20,7 @@ set incsearch		" do incremental searching
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
+inoremap	<C-U>	<C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -79,42 +79,42 @@ endif
 let mapleader = ","
 
 " Silly little mappings that make my life easier ;)
-inoremap jk <ESC>
-nnoremap <Space><Space> <PageDown>L
-nnoremap <Space>k <PageUp>H
-nnoremap <Space>j <PageDown>L
-map Q :q!
-nnoremap <Space>so :source $MYVIMRC<CR>
+inoremap	jk		<ESC>
+nnoremap	<Space><Space>	<PageDown>L
+nnoremap	<Space>k	<PageUp>H
+nnoremap	<Space>j	<PageDown>L
+map	Q		:q!
+nnoremap	<Space>so	:source $MYVIMRC<CR>
 
 " Can't always use CTRL-W (esp. when working from Chromebook)
-nnoremap <Space>wc :winc 
+nnoremap	<Space>wc	:winc 
 
 " Show mappings in this file
-nnoremap <Space>kb :vne<CR>:r !sed -n 's/\(^\w*map \)\(.*$\)/\2/p' $HOME/.vimrc<CR>:sort<CR>
+nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/\2/p' $MYVIMRC<CR>:sort<CR>
 
 " Open the file (on line number) in vertical split 
-nnoremap <Space>gf :vsp<CR>gF
-nnoremap <Return> :vsp<CR>gF
+nnoremap	<Space>gf	:vsp<CR>gF
+nnoremap	<Return>	:vsp<CR>gF
 
 " Insert the date in YYYY-MM-DD format inline just before cursor position 
-nnoremap <Space>di me:r !date +\%F<CR>A <Esc>0D`ePJx
+nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx
 
 " Vimways.org: insert date inline 
-inoremap <C-g><C-t> <C-r>=strftime("%F")<CR>
+inoremap	<C-g><C-t>	<C-r>=strftime("%F")<CR>
 
 " Insert the date in YYYY-MM-DD Day format and insert two lines 
-nnoremap <Space>da :r !date +\%F" "\%a<CR>o<CR>
+nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR>
 
 " Insert the time in HH:MM format 
-nnoremap <Space>ti :r !date +\%R<CR>
+nnoremap	<Space>ti	:r !date +\%R<CR>
 
 " Mark a gtd task complete and move completed tasks to the bottom 
-nnoremap <Space>co $F*ciw+ <Esc>md:r !date +\%F<CR>0D`dpJx
-nnoremap <Space>do :g/^\s*+/m$<CR>:set nohls<CR>
+nnoremap	<Space>co	$F*ciw+ <Esc>md:r !date +\%F<CR>0D`dpJx
+nnoremap	<Space>do	:g/^\s*+/m$<CR>:set nohls<CR>
 
 " Find and remove trailing whitespace 
-nnoremap <Space>ws /\s\+$<CR>
-nnoremap <Space>wd :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap	<Space>ws	/\s\+$<CR>
+nnoremap	<Space>wd	:let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 set number
 
@@ -151,7 +151,7 @@ let g:tex_flavor='latex'
 
 " From danielmiessler.com: Remap your leader key
 set encoding=utf-8
-vnoremap . :norm.<CR>
+vnoremap	.		:norm.<CR>
 " set spell spellang=en_us "throws error msg on startup
 
 " From lukesmith.xyz:  Splits open at the bottom and right, which is

@@ -32,6 +32,8 @@ alias hsp='tmux split -v'
 # git
 alias gtree='git log --graph --abbrev-commit --decorate --date=relative --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
 
-alias gaa='git add --all'
 alias gst='git status'
+alias ga='git add'
+alias gaa='git add --all'
 alias gc='git commit'
+alias gp='git push'

@@ -104,5 +104,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Use vi keybindings
+set -o vi
+bind '"jk":vi-movement-mode'
+bind 'set show-mode-in-prompt on'
+
 # Path modifications
-PATH=$PATH:"$HOME/todo.txt-cli/"
+#PATH=$PATH:"$HOME/todo.txt-cli/"

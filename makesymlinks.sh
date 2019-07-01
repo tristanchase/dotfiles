@@ -29,12 +29,12 @@ for file in $files; do
 	mv --backup=t ~/.$file ~/dotfiles_old/
 	echo "Creating symlink to $file in home directory."
 	ln -s $dir/$file ~/.$file
-	if [[ -f /bin/zsh -o -f /usr/bin/zsh ]]; then
-		ln -s $dir/zshrc ~/.zshrc
-	fi
-	if [[ -d $dir/oh-my-zsh/ ]]; then
-		ln -s $dir/mytheme.zsh-theme ~/.oh-my-zsh/themes
-	fi
+	#if [[ -f /bin/zsh -o -f /usr/bin/zsh ]]; then
+	#	ln -s $dir/zshrc ~/.zshrc
+	#fi
+	#if [[ -d $dir/oh-my-zsh/ ]]; then
+	#	ln -s $dir/mytheme.zsh-theme ~/.oh-my-zsh/themes
+	#fi
 done
 echo "Done."
 

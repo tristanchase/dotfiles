@@ -85,36 +85,29 @@ nnoremap	<Space>k	<PageUp>H
 nnoremap	<Space>j	<PageDown>L
 map	Q		:q!
 nnoremap	<Space>so	:source $MYVIMRC<CR>
+nnoremap	<Space>vv	:vsp $MYVIMRC<CR>
 
-" Can't always use CTRL-W (esp. when working from Chromebook)
-nnoremap	<Space>wc	:winc 
+nnoremap	<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
 
-" Show mappings in this file
-nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/\2/p' $MYVIMRC<CR>:sort<CR>
+nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/* \2/p' $MYVIMRC<CR>:sort<CR> | " Show mappings in this file
 
-" Open the file (on line number) in vertical split 
-nnoremap	<Space>gf	:vsp<CR>gF
-nnoremap	<Return>	:vsp<CR>gF
+nnoremap	<Space>gf	:vsp<CR>gF | " Open the file (on line number) in vertical split
+nnoremap	<Return>	:vsp<CR>gF | " Open the file (on line number) in vertical split
 
-" Insert the date in YYYY-MM-DD format inline just before cursor position 
-nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx
 
-" Vimways.org: insert date inline 
-inoremap	<C-g><C-t>	<C-r>=strftime("%F")<CR>
+nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx | " Insert the date in YYYY-MM-DD format inline just before cursor position
 
-" Insert the date in YYYY-MM-DD Day format and insert two lines 
-nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR>
+inoremap	<C-g><C-t>	<C-r>=strftime("%F")<CR> | " Vimways.org: insert date inline
 
-" Insert the time in HH:MM format 
-nnoremap	<Space>ti	:r !date +\%R<CR>
+nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR> | " Insert the date in YYYY-MM-DD Day format and insert two lines
 
-" Mark a gtd task complete and move completed tasks to the bottom 
-nnoremap	<Space>co	$F*ciw+ <Esc>md:r !date +\%F<CR>0D`dpJx
-nnoremap	<Space>do	:g/^\s*+/m$<CR>:set nohls<CR>
+nnoremap	<Space>ti	:r !date +\%R<CR> | " Insert the time in HH:MM format
 
-" Find and remove trailing whitespace 
-nnoremap	<Space>ws	/\s\+$<CR>
-nnoremap	<Space>wd	:let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap	<Space>co	$F*ciw+ <Esc>md:r !date +\%F<CR>0D`dpJx | " Mark a gtd task complete
+nnoremap	<Space>do	:g/^\s*+/m$<CR>:set nohls<CR> | " Move completed tasks to the bottom of the list
+
+nnoremap	<Space>ws	/\s\+$<CR> | " Find trailing whitespace
+nnoremap	<Space>wd	:let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR> | " Remove trailing whitespace
 
 set number
 

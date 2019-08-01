@@ -103,11 +103,14 @@ nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR> | " Insert the date in YYYY-MM-D
 
 nnoremap	<Space>ti	:r !date +\%R<CR> | " Insert the time in HH:MM format
 
-nnoremap	<Space>co	$F*ciw+ <Esc>md:r !date +\%F<CR>0D`dpJx | " Mark a gtd task complete
+nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx | " Mark a gtd task complete
 nnoremap	<Space>do	:g/^\s*+/m$<CR>:set nohls<CR> | " Move completed tasks to the bottom of the list
 
 nnoremap	<Space>ws	/\s\+$<CR> | " Find trailing whitespace
 nnoremap	<Space>wd	:let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR> | " Remove trailing whitespace
+
+nnoremap	<Space>ns	/\zs\\.*section\ze[^ ]<CR>zz | " Find next section in LaTeX
+nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz | " Find previous section in LaTeX
 
 set number
 
@@ -162,7 +165,8 @@ set background=dark " dark | light "
 colorscheme solarized
 "filetype plugin on
 set cursorline
-set colorcolumn=80
+set cursorcolumn
+"set colorcolumn=80
 call togglebg#map("<F5>")
 
 " TODO Clean up this file!

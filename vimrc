@@ -92,7 +92,7 @@ nnoremap	<Space>k	<PageUp>H
 nnoremap	<Space>j	<PageDown>L
 map		Q		:q!
 nnoremap	<Space>so	:source $MYVIMRC<CR>
-nnoremap	<Space>vv	:vsp $MYVIMRC<CR>
+nnoremap	<Space>vv	:tabe $MYVIMRC<CR>
 
 nmap		<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
 nnoremap	<Space>ww	<C-w>w

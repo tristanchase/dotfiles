@@ -13,7 +13,7 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
-
+set ignorecase smartcase
 
 " Don't use Ex mode, use Q for formatting
 "map Q gq
@@ -68,6 +68,13 @@ else
 
 endif " has("autocmd")
 
+" Keep cursor line in center (from https://vim.fandom.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen)
+augroup VCenterCursor
+	  au!
+	    au BufEnter,WinEnter,WinNew,VimResized *,*.*
+	            \ let &scrolloff=winheight(win_getid())/2
+    augroup END
+
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
@@ -83,16 +90,36 @@ inoremap	jk		<ESC>
 nnoremap	<Space><Space>	<PageDown>L
 nnoremap	<Space>k	<PageUp>H
 nnoremap	<Space>j	<PageDown>L
-map	Q		:q!
+map		Q		:q!
 nnoremap	<Space>so	:source $MYVIMRC<CR>
 nnoremap	<Space>vv	:vsp $MYVIMRC<CR>
 
-nnoremap	<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
+nmap		<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
+nnoremap	<Space>ww	<C-w>w
+nnoremap	<Space>wh	<C-w>h
+nnoremap	<Space>wl	<C-w>l
+nnoremap	<Space>wk	<C-w>k
+nnoremap	<Space>wj	<C-w>j
 
-nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/* \2/p' $MYVIMRC<CR>:sort<CR> | " Show mappings in this file
+nnoremap j jzz
+nnoremap k kzz
 
-nnoremap	<Space>gf	:vsp<CR>gF | " Open the file (on line number) in vertical split
-nnoremap	<Return>	:vsp<CR>gF | " Open the file (on line number) in vertical split
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+
+nnoremap	<Space>kb	:!grep "\(^\w*map\s\)" $MYVIMRC > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR> | " Show mappings in this file
+"nnoremap	<Space>kb	:tabe<CR>:r !grep "\(^\w*map\s\)" $MYVIMRC<CR> | " Show mappings in this file
+"nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/* \2/p' $MYVIMRC<CR> | " Show mappings in this file
+"nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/* \2/p' $MYVIMRC<CR>:sort<CR> | " Show mappings in this file
+
+"nnoremap	<Space>gf	:vsp<CR>gF | " Open the file (on line number) in vertical split
+nnoremap	<Space>gf	:winc gF<CR> | " Open the file (on line number) in new tab
+"nnoremap	<Return>	:vsp<CR>gF | " Open the file (on line number) in vertical split
+nnoremap	<Return>	:winc gF<CR> | " Open the file (on line number) in new tab
 
 
 nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx | " Insert the date in YYYY-MM-DD format inline just before cursor position
@@ -104,13 +131,14 @@ nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR> | " Insert the date in YYYY-MM-D
 nnoremap	<Space>ti	:r !date +\%R<CR> | " Insert the time in HH:MM format
 
 nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx | " Mark a gtd task complete
-nnoremap	<Space>do	:g/^\s*+/m$<CR>:set nohls<CR> | " Move completed tasks to the bottom of the list
+nnoremap	<Space>do	md:g/^\s*+/m$<CR>:set nohls<CR>`d | " Move completed tasks to the bottom of the list
 
 nnoremap	<Space>ws	/\s\+$<CR> | " Find trailing whitespace
 nnoremap	<Space>wd	:let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR> | " Remove trailing whitespace
 
 nnoremap	<Space>ns	/\zs\\.*section\ze[^ ]<CR>zz | " Find next section in LaTeX
 nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz | " Find previous section in LaTeX
+nnoremap	<Space>ok	A<Tab>%OK TMC<Esc>
 
 set number
 
@@ -161,6 +189,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 call pathogen#infect()
 syntax on
+"set background=light " dark | light "
 set background=dark " dark | light "
 colorscheme solarized
 "filetype plugin on

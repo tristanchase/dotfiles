@@ -85,11 +85,11 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
+alias lf='ls -Fa'
 alias ll='ls --color=always -alF | less -R'
 alias la='ls --color=always -A | less -R'
 alias l='ls --color=always -CF | less -R'
 alias lh='ls --color=always -lasth | less -R'
-alias t='todo.sh -d $HOME/todo.txt-cli/todo.cfg'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

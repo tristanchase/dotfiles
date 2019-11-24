@@ -1,9 +1,13 @@
 ## alias stuff
+
+# List the files in the current directory with filetype and source of symlinks
+ alias ft='ftx `ls -a` | more' #ftx is a script in ~/bin
+
 # Make env output a little more readable
 alias env='env | sort | less -M'
 
 # Make path easier to visualize
-alias path='env | grep $PATH'
+alias path='echo PATH=$PATH | more'
 
 # Make alias output a little more readable
 alias aka='alias | less -M'
@@ -37,3 +41,8 @@ alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
 alias gp='git push'
+
+# Edit and source ~/.bashrc
+alias bb='vim ~/.bashrc'
+alias so='source ~/.bashrc'
+

@@ -85,6 +85,7 @@ endif
 
 let mapleader = ","
 
+" Mappings
 " Silly little mappings that make my life easier ;)
 inoremap	jk		<ESC>
 nnoremap	<Space><Space>	<PageDown>L
@@ -101,17 +102,21 @@ nnoremap	<Space>wl	<C-w>l
 nnoremap	<Space>wk	<C-w>k
 nnoremap	<Space>wj	<C-w>j
 
-nnoremap j jzz
-nnoremap k kzz
+nnoremap	j		jzz
+nnoremap	k		kzz
 
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+nnoremap	n		nzz
+nnoremap	N		Nzz
+nnoremap	*		*zz
+nnoremap	#		#zz
+nnoremap	g*		g*zz
+nnoremap	g#		g#zz
 
-nnoremap	<Space>kb	:!grep "\(^\w*map\s\)" $MYVIMRC > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR> | " Show mappings in this file
+nnoremap	<Space>sa	ggVG | " Select all
+
+map!		<C-F>		<Esc>gUiw`]a | " Make word before cursor UPPERCASE
+
+nnoremap	<Space>kb	:!grep "^\w*map\!*\s" $MYVIMRC > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR> | " Show mappings in this file
 "nnoremap	<Space>kb	:tabe<CR>:r !grep "\(^\w*map\s\)" $MYVIMRC<CR> | " Show mappings in this file
 "nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/* \2/p' $MYVIMRC<CR> | " Show mappings in this file
 "nnoremap	<Space>kb	:vne<CR>:r !sed -n 's/\(^\w*map\s\)\(.*$\)/* \2/p' $MYVIMRC<CR>:sort<CR> | " Show mappings in this file
@@ -139,6 +144,7 @@ nnoremap	<Space>wd	:let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <B
 nnoremap	<Space>ns	/\zs\\.*section\ze[^ ]<CR>zz | " Find next section in LaTeX
 nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz | " Find previous section in LaTeX
 nnoremap	<Space>ok	A<Tab>%OK TMC<Esc>
+" EndMappings
 
 set number
 

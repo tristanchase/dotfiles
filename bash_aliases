@@ -1,7 +1,7 @@
 ## alias stuff
 
 # List the files in the current directory with filetype and source of symlinks
- alias ft='ftx `ls -a` | more' #ftx is a script in ~/bin
+ alias ft='ftx .* * | more' #ftx is a script in ~/bin
 
 # Make env output a little more readable
 alias env='env | sort | less -M'

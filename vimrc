@@ -14,6 +14,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set ignorecase smartcase
+set number
 
 " Don't use Ex mode, use Q for formatting
 "map Q gq
@@ -87,7 +88,7 @@ let mapleader = ","
 
 " Mappings
 " Silly little mappings that make my life easier ;)
-inoremap	jk		<ESC>
+inoremap	jk		<ESC>	
 nnoremap	<Space><Space>	<PageDown>L
 nnoremap	<Space>k	<PageUp>H
 nnoremap	<Space>j	<PageDown>L
@@ -126,6 +127,7 @@ nnoremap	<Space>gf	:winc gF<CR> | " Open the file (on line number) in new tab
 "nnoremap	<Return>	:vsp<CR>gF | " Open the file (on line number) in vertical split
 nnoremap	<Return>	:winc gF<CR> | " Open the file (on line number) in new tab
 
+nnoremap	<Space>li	:set list!<CR> | " Toggle hidden characters
 
 nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx | " Insert the date in YYYY-MM-DD format inline just before cursor position
 
@@ -138,15 +140,12 @@ nnoremap	<Space>ti	:r !date +\%R<CR> | " Insert the time in HH:MM format
 nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx | " Mark a gtd task complete
 nnoremap	<Space>do	md:g/^\s*+/m$<CR>:set nohls<CR>`d | " Move completed tasks to the bottom of the list
 
-nnoremap	<Space>ws	/\s\+$<CR> | " Find trailing whitespace
-nnoremap	<Space>wd	:let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR> | " Remove trailing whitespace
+nnoremap	<Space>ws	:%s/\s\+$//eg<CR> | " Find and kill trailing whitespace
 
 nnoremap	<Space>ns	/\zs\\.*section\ze[^ ]<CR>zz | " Find next section in LaTeX
 nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz | " Find previous section in LaTeX
 nnoremap	<Space>ok	A<Tab>%OK TMC<Esc>
 " EndMappings
-
-set number
 
 " netrw
 let g:netrw_banner = 0

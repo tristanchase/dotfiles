@@ -1,7 +1,11 @@
 ## alias stuff
 
+# Make alias output a little more readable
+alias aka='alias | less -M'
+alias graka='grep -n "^#*alias" ~/dotfiles/* | vim -'
+
 # List the files in the current directory with filetype and source of symlinks
- alias ft='ftx .* * | more' #ftx is a script in ~/bin
+alias ft='ftx .* * | more' #ftx is a script in ~/bin
 
 # Make env output a little more readable
 alias env='env | sort | less -M'
@@ -9,12 +13,10 @@ alias env='env | sort | less -M'
 # Make path easier to visualize
 alias path='echo PATH=$PATH | more'
 
-# Make alias output a little more readable
-alias aka='alias | less -M'
-
 # Stupid command line tricks
 alias :q='exit'
 alias x='exit'
+alias Q='exit'
 alias ra='ranger'
 
 ## Solve conflict between zsh changing to ~/gtd and running ~/bin/gtd
@@ -39,7 +41,7 @@ alias gtree='git log --graph --abbrev-commit --decorate --date=relative --format
 alias gst='git status'
 alias ga='git add'
 alias gaa='git add --all'
-alias gc='git commit'
+alias gc='git commit -v'
 alias gp='git push'
 
 # Edit and source ~/.bashrc

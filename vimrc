@@ -88,7 +88,7 @@ let mapleader = ","
 
 " Mappings
 " Silly little mappings that make my life easier ;)
-inoremap	jk		<ESC>	
+inoremap	jk		<ESC>
 nnoremap	<Space><Space>	<PageDown>L
 nnoremap	<Space>k	<PageUp>H
 nnoremap	<Space>j	<PageDown>L
@@ -109,6 +109,7 @@ nnoremap	*		*zz
 nnoremap	#		#zz
 nnoremap	g*		g*zz
 nnoremap	g#		g#zz
+nnoremap	th		:tab help |
 nnoremap	<Space>sa	ggVG | " Select all
 map!		<C-F>		<Esc>gUiw`]a| " Make word before cursor UPPERCASE
 nnoremap	<Space>kb	:!grep "^\w*map\!*\s" $MYVIMRC > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR> | " Show mappings in this file

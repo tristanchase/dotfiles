@@ -1,5 +1,8 @@
 ## alias stuff
 
+# Anchor your top-level shell
+alias anchor='export TOPLVL=$SHLVL; PS1=$ANCHOR"$PS1"'
+
 # Make alias output a little more readable
 alias aka='alias | less -M'
 alias graka='grep -n "^#*alias" ~/dotfiles/* | vim -'

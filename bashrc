@@ -28,6 +28,40 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# Colors
+
+NONE="\[\033[0m\]"    # unsets color to term's fg color
+
+# regular colors
+K="\[\033[0;30m\]"    # black
+R="\[\033[0;31m\]"    # red
+G="\[\033[0;32m\]"    # green
+Y="\[\033[0;33m\]"    # yellow
+B="\[\033[0;34m\]"    # blue
+M="\[\033[0;35m\]"    # magenta
+C="\[\033[0;36m\]"    # cyan
+W="\[\033[0;37m\]"    # white
+
+# empahsized (bolded) colors
+EMK="\[\033[1;30m\]"
+EMR="\[\033[1;31m\]"
+EMG="\[\033[1;32m\]"
+EMY="\[\033[1;33m\]"
+EMB="\[\033[1;34m\]"
+EMM="\[\033[1;35m\]"
+EMC="\[\033[1;36m\]"
+EMW="\[\033[1;37m\]"
+
+# background colors
+BGK="\[\033[40m\]"
+BGR="\[\033[41m\]"
+BGG="\[\033[42m\]"
+BGY="\[\033[43m\]"
+BGB="\[\033[44m\]"
+BGM="\[\033[45m\]"
+BGC="\[\033[46m\]"
+BGW="\[\033[47m\]"
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -56,8 +90,12 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true  # '%' untracked files
 export GIT_PS1_SHOWUPSTREAM="auto"      # '<' behind, '>' ahead, '<>' diverged, '=' no difference
 export GIT_PS1_SHOWSTASHSTATE=true      # '$' something is stashed
 
+# $SHLVL prompt tricks
+#TOPLVL=
+ANCHOR=$(echo -e "\xE2\x9A\x93")
+
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(__git_ps1 " (%s)")\[\033[00m\]\$ '
+	PS1='${debian_chroot:+($debian_chroot)}'$EMM'[$TOPLVL/$SHLVL]'$EMG'\u@\h'$NONE':'$EMB'\w$(__git_ps1 " (%s)")'$NONE'\$ '
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 fi

@@ -133,6 +133,7 @@ let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 3
 let g:netrw_keepdir = 0
+let g:netrw_fastbrowse = 0 " Possibly gets rid of [RO] netrw buffers: https://github.com/tpope/vim-vinegar/issues/13: * Monitor 2019-12-05
 
 
 " These may be useful for working with LaTeX.

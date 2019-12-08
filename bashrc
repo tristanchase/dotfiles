@@ -4,7 +4,7 @@
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-
+# History
 # don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
@@ -15,6 +15,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+# EndHistory
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -61,6 +62,7 @@ BGB="\[\033[44m\]"
 BGM="\[\033[45m\]"
 BGC="\[\033[46m\]"
 BGW="\[\033[47m\]"
+# EndColors
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -94,12 +96,14 @@ export GIT_PS1_SHOWSTASHSTATE=true      # '$' something is stashed
 #TOPLVL=
 ANCHOR=$(echo -e "\xE2\x9A\x93")
 
+# Prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}'$EMM'[$TOPLVL/$SHLVL]'$EMG'\u@\h'$NONE':'$EMB'\w$(__git_ps1 " (%s)")'$NONE'\$ '
+	PS1='${debian_chroot:+($debian_chroot)}'$EMM'[$TMUX_PANE/$TOPLVL/$SHLVL]'$EMG'\u@\h'$NONE':'$EMB'\w$(__git_ps1 " (%s)")'$NONE'\$ '
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 fi
 unset color_prompt force_color_prompt
+# EndPrompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -109,7 +113,7 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
+# Alias
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -141,6 +145,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+# EndAlias
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

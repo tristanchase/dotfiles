@@ -1,7 +1,7 @@
 set nocompatible
 let mapleader = ","
 execute pathogen#infect() 
-" Set
+" Set statements"{{{
 set backspace=indent,eol,start
 set backup		
 set backupdir=~/.vim/tmp//,.
@@ -18,7 +18,8 @@ set encoding=utf-8
 set splitbelow
 set splitright
 " EndSet
-" Conditional
+"}}}
+" Conditionals"{{{
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
 	set mouse=a
@@ -30,47 +31,6 @@ if &t_Co > 2 || has("gui_running")
 	syntax on
 	set hlsearch
 endif
-" Autocommand
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-	" Enable file type detection.
-	" Use the default filetype settings, so that mail gets 'tw' set to 72,
-	" 'cindent' is on in C files, etc.
-	" Also load indent files, to automatically do language-dependent indenting.
-	filetype plugin indent on
-
-	" Put these in an autocmd group, so that we can delete them easily.
-	augroup vimrcEx
-		au!
-
-		" For all text files set 'textwidth' to 78 characters.
-		autocmd FileType text setlocal textwidth=78
-
-		" When editing a file, always jump to the last known cursor position.
-		" Don't do it when the position is invalid or when inside an event handler
-		" (happens when dropping a file on gvim).
-		" Also don't do it when the mark is in the first line, that is the default
-		" position when opening a file.
-		autocmd BufReadPost *
-					\ if line("'\"") > 1 && line("'\"") <= line("$") |
-					\   exe "normal! g`\"" |
-					\ endif
-
-	augroup END
-
-else
-
-	set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" Keep cursor line in center (from https://vim.fandom.com/wiki/Keep_your_cursor_centered_vertically_on_the_screen)
-augroup VCenterCursor
-	au!
-	au BufEnter,WinEnter,WinNew,VimResized *,*.*
-				\ let &scrolloff=winheight(win_getid())/2
-augroup END
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
@@ -80,16 +40,44 @@ if !exists(":DiffOrig")
 				\ | wincmd p | diffthis
 endif
 
-augroup AutoSaveFolds
-	autocmd!
-	autocmd BufWinLeave * mkview
-	autocmd BufWinEnter * silent loadview
-augroup END
+" EndConditionals
+"}}}
+" Autocommands"{{{
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
 
-" EndAutocommand
+	filetype plugin indent on
 
-" EndConditional
-" MyMappings
+	augroup vimrcEx
+		au!
+		autocmd FileType text setlocal textwidth=78
+		autocmd BufReadPost *
+					\ if line("'\"") > 1 && line("'\"") <= line("$") |
+					\   exe "normal! g`\"" |
+					\ endif
+	augroup END
+
+	augroup VCenterCursor
+		au!
+		au BufEnter,WinEnter,WinNew,VimResized *,*.*
+					\ let &scrolloff=winheight(win_getid())/2
+	augroup END
+
+	"augroup AutoSaveFolds "This throws too many errors!
+	"	autocmd!
+	"	autocmd BufWinLeave * mkview
+	"	autocmd BufWinEnter * silent loadview
+	"augroup END
+
+else
+
+	set autoindent		" always set autoindenting on
+
+endif " has("autocmd")
+
+" EndAutocommands
+"}}}
+" MyMappings"{{{
 " Silly little mappings that make my life easier ;)
 inoremap	jk		<ESC>
 nnoremap	<Space><Space>	<PageDown>L
@@ -135,15 +123,36 @@ nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz | " Find previous section in La
 nnoremap	<Space>ok	A<Tab>%OK TMC<Esc>
 inoremap	<C-U>		<C-G>u<C-U>
 vnoremap	.		:norm.<CR>
+nnoremap	<Space>hl	:set nohls!<CR>
+vnoremap	<leader>'	<esc>`<i'<esc>`>a'<esc>
+vnoremap	<leader>*	<esc>`<i*<esc>`>a*<esc>
+vnoremap	<leader>"	<esc>`<i"<esc>`>a"<esc>
+vnoremap	<leader>(	<esc>`<i(<esc>`>a)<esc>
+vnoremap	<leader>[	<esc>`<i[<esc>`>a]<esc>
+vnoremap	<leader>{	<esc>`<i{<esc>`>a}<esc>
+vnoremap	<leader>`	<esc>`<i`<esc>`>a'<esc>
+vnoremap	<leader>``	<esc>`<i``<esc>`>a''<esc>
+inoremap	<leader>'	''<esc>i
+inoremap	<leader>*	**<esc>i
+inoremap	<leader>"	""<esc>i
+inoremap	<leader>(	()<esc>i
+inoremap	<leader>[	[]<esc>i
+inoremap	<leader>{	{}<esc>i
+inoremap	<leader>`	`'<esc>i
+inoremap	<leader>``	``''<esc>hi
+nnoremap	H		0
+nnoremap	L		$
 " EndMyMappings
-" Netrw
+"}}}
+" Netrw"{{{
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 3
 let g:netrw_keepdir = 0
 let g:netrw_fastbrowse = 0 " Possibly gets rid of [RO] netrw buffers: https://github.com/tpope/vim-vinegar/issues/13: * Monitor 2019-12-05
 " EndNetrw
-" LaTeX
+"}}}
+" LaTeX"{{{
 " These may be useful for working with LaTeX.
 set wrap
 set linebreak
@@ -155,7 +164,8 @@ set grepprg=grep\ -nH\ $*
 "filetype indent on
 let g:tex_flavor='latex'
 " EndLaTeX
-" Solarized colorscheme
+"}}}
+" Solarized colorscheme"{{{
 set t_Co=256
 let g:solarized_termcolors=256
 call pathogen#infect()
@@ -169,5 +179,5 @@ set cursorcolumn
 "set colorcolumn=80
 call togglebg#map("<F5>")
 " EndSolarized
-
+"}}}
 " TODO Clean up this file!

@@ -1,5 +1,6 @@
 set nocompatible
 let mapleader = ","
+let maplocalleader = "_"
 execute pathogen#infect() 
 " Set statements"{{{
 set backspace=indent,eol,start
@@ -12,7 +13,7 @@ set showcmd
 set incsearch		
 set ignorecase smartcase
 set number
-set path=.,/usr/include,,~,**	" Fuzzy find-type settings from https://youtu.be/XA2WjJbmmoM
+set path=.,/usr/include,,,~,**	" Fuzzy find-type settings from https://youtu.be/XA2WjJbmmoM
 set wildmenu
 set encoding=utf-8
 set splitbelow
@@ -63,6 +64,24 @@ if has("autocmd")
 					\ let &scrolloff=winheight(win_getid())/2
 	augroup END
 
+	augroup MapComment
+		autocmd!
+		autocmd FileType bash	 nnoremap <buffer> <localleader>c I#<esc>
+		autocmd FileType sh	 nnoremap <buffer> <localleader>c I#<esc>
+		autocmd FileType conf	 nnoremap <buffer> <localleader>c I#<esc>
+		autocmd FileType vim	 nnoremap <buffer> <localleader>c I\"<esc>
+	augroup END
+
+	augroup filetype_html
+		autocmd!
+		autocmd FileType html nnoremap <buffer> <localleader>f Vatzf
+	augroup END
+
+	augroup filetype_vim
+		autocmd!
+		autocmd FileType vim setlocal foldmethod=marker
+	augroup END
+
 	"augroup AutoSaveFolds "This throws too many errors!
 	"	autocmd!
 	"	autocmd BufWinLeave * mkview
@@ -80,14 +99,15 @@ endif " has("autocmd")
 " MyMappings"{{{
 " Silly little mappings that make my life easier ;)
 inoremap	jk		<ESC>
+nnoremap	Y		y$
 nnoremap	<Space><Space>	<PageDown>L
 nnoremap	<Space>k	<PageUp>H
 nnoremap	<Space>j	<PageDown>L
-map		Q		:q!
+nnoremap	Q		:q!
 nnoremap	<Space>so	:source $MYVIMRC<CR>
 nnoremap	<Space>vv	:tabe $MYVIMRC<CR>
 nnoremap	<Space>bb	:tabe $HOME/.bashrc<CR>
-nmap		<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
+nnoremap	<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
 nnoremap	<Space>ww	<C-w>w
 nnoremap	<Space>wh	<C-w>h
 nnoremap	<Space>wl	<C-w>l
@@ -102,14 +122,15 @@ nnoremap	#		#zz
 nnoremap	g*		g*zz
 nnoremap	g#		g#zz
 nnoremap	<Space>qq	:q!
-nnoremap	<Space>ww	:w
+nnoremap	<Space>hh	:w<CR>
 nnoremap	<Space>wq	:wq
 nnoremap	<Space>sa	ggVG | " Select all
 nnoremap	<Space>fi	:find ./.**/
 map!		<C-F>		<Esc>gUiw`]a| " Make word before cursor UPPERCASE
-nnoremap	<Space>kb	:!grep "^\w*map\!*\s" $MYVIMRC > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR> | " Show mappings in this file
+nnoremap	<leader>kb	:!grep "^\w*map\!*\s" $MYVIMRC > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR> | " Show mappings in this file
 nnoremap	<Space>gf	:winc gF<CR> | " Open the file (on line number) in new tab
 nnoremap	<Return>	:winc gF<CR> | " Open the file (on line number) in new tab
+nnoremap	<Space>gr	:r <cfile><CR> | " Read contents of the file under the cursor into the current file
 nnoremap	<Space>li	:set list!<CR> | " Toggle hidden characters
 nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx | " Insert the date in YYYY-MM-DD format inline just before cursor position
 inoremap	<C-g><C-t>	<C-r>=strftime("%F")<CR> | " Vimways.org: insert date inline
@@ -181,3 +202,5 @@ call togglebg#map("<F5>")
 " EndSolarized
 "}}}
 " TODO Clean up this file!
+"
+" vim: set fdm=marker: 

@@ -1,6 +1,4 @@
 set nocompatible
-let mapleader = ","
-let maplocalleader = "_"
 execute pathogen#infect() 
 " Set statements"{{{
 set backspace=indent,eol,start
@@ -98,6 +96,8 @@ endif " has("autocmd")
 "}}}
 " MyMappings"{{{
 " Silly little mappings that make my life easier ;)
+let mapleader = ","
+let maplocalleader = "_"
 inoremap	jk		<ESC>
 nnoremap	Y		y$
 nnoremap	<Space><Space>	<PageDown>L

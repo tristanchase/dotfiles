@@ -161,3 +161,7 @@ bind 'set show-mode-in-prompt on'
 
 # Path modifications
 #PATH=$PATH:"$HOME/todo.txt-cli/"
+
+# Disables Ctrl-S flow control (which stops the terminal)
+#stty -ixon
+stty ixany # Lets any key resume

@@ -121,6 +121,7 @@ nnoremap	*		*zz
 nnoremap	#		#zz
 nnoremap	g*		g*zz
 nnoremap	g#		g#zz
+nnoremap	th		:tab help |
 nnoremap	<Space>qq	:q!
 nnoremap	<Space>hh	:w<CR>
 nnoremap	<Space>wq	:wq

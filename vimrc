@@ -152,6 +152,7 @@ vnoremap	<leader>"	<esc>`<i"<esc>`>a"<esc>
 vnoremap	<leader>(	<esc>`<i(<esc>`>a)<esc>
 vnoremap	<leader>[	<esc>`<i[<esc>`>a]<esc>
 vnoremap	<leader>{	<esc>`<i{<esc>`>a}<esc>
+vnoremap	<leader><	<esc>`<i<<esc>`>a><esc>
 vnoremap	<leader>`	<esc>`<i`<esc>`>a'<esc>
 vnoremap	<leader>``	<esc>`<i``<esc>`>a''<esc>
 inoremap	<leader>'	''<esc>i
@@ -160,6 +161,7 @@ inoremap	<leader>"	""<esc>i
 inoremap	<leader>(	()<esc>i
 inoremap	<leader>[	[]<esc>i
 inoremap	<leader>{	{}<esc>i
+inoremap	<leader><	<><esc>i
 inoremap	<leader>`	`'<esc>i
 inoremap	<leader>``	``''<esc>hi
 nnoremap	H		0

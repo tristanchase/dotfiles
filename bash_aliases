@@ -46,8 +46,8 @@ alias hsp='tmux split -v'
 alias gtree='git log --graph --abbrev-commit --decorate --date=relative --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
 
 alias gst='git status'
-alias ga='ws || (echo "None" && git add)' # Check files for trailing whitespace first
-alias gaa='ws || (echo "None" && git add --all)' # Check files for trailing whitespace first
+alias ga='ws || (echo "--None--" && git add)' # Check files for trailing whitespace first
+alias gaa='ws || (echo "--None--" && git add --all)' # Check files for trailing whitespace first
 alias gc='git commit -v'
 alias gp='git push'
 

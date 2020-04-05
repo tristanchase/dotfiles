@@ -22,8 +22,12 @@ alias x='exit'
 alias Q='exit'
 alias ra='ranger'
 
+# Prepend sudo to last command
+alias please='sudo $(fc -ln -1)'
+alias fuck='sudo $(fc -ln -1)'
+
 ## Solve conflict between zsh changing to ~/gtd and running ~/bin/gtd
-#alias gtd='~/bin/gtd' 
+#alias gtd='~/bin/gtd'
 
 # byobu (tmux) window splits
 alias vsplit='tmux split -h'
@@ -42,12 +46,18 @@ alias hsp='tmux split -v'
 alias gtree='git log --graph --abbrev-commit --decorate --date=relative --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
 
 alias gst='git status'
-alias ga='git add'
-alias gaa='git add --all'
+alias ga='ws || (echo "None" && git add)' # Check files for trailing whitespace first
+alias gaa='ws || (echo "None" && git add --all)' # Check files for trailing whitespace first
 alias gc='git commit -v'
 alias gp='git push'
 
 # Edit and source ~/.bashrc
 alias bb='vim ~/.bashrc'
 alias so='source ~/.bashrc'
+
+# Get last exit code
+alias err="echo $?"
+
+# Check files for trailing whitespace
+alias ws='echo "The following files contain trailing whitespace: " && grep -n '\''\s$'\'' * '
 

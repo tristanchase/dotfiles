@@ -59,7 +59,7 @@ alias so='source ~/.bashrc'
 alias err="echo $?"
 
 # Check files for trailing whitespace
-alias ga='wsg || (echo "--None--" && git add)'
+#alias ga='wsg || (echo "--None--" && git add)'
 alias gaa='wsg || (echo "--None--" && git add --all)'
-alias wsg='echo "The following files contain trailing whitespace: " && grep -n '\''\s$'\'' * '
-alias ws='echo "The following files contain trailing whitespace: " && grep -n '\''\s$'\'' * || echo "--None--" '
+alias wsg='echo "The following files contain trailing whitespace: " && grep -nr '\''\s$'\'' * '
+alias ws='echo "The following files contain trailing whitespace: " && grep -nr '\''\s$'\'' * || echo "--None--" '

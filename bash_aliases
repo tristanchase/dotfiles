@@ -46,8 +46,8 @@ alias hsp='tmux split -v'
 alias gtree='git log --graph --abbrev-commit --decorate --date=relative --format=format:'\''%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'\'' --all'
 
 alias gst='git status'
-alias ga='ws || (echo "--None--" && git add)' # Check files for trailing whitespace first
-alias gaa='ws || (echo "--None--" && git add --all)' # Check files for trailing whitespace first
+alias ga='git add'
+alias gaa='git add --all'
 alias gc='git commit -v'
 alias gp='git push'
 
@@ -59,7 +59,4 @@ alias so='source ~/.bashrc'
 alias err="echo $?"
 
 # Check files for trailing whitespace
-#alias ga='wsg || (echo "--None--" && git add)'
-alias gaa='wsg || (echo "--None--" && git add --all)'
-alias wsg='echo "The following files contain trailing whitespace: " && grep -nr '\''\s$'\'' * '
-alias ws='echo "The following files contain trailing whitespace: " && grep -nr '\''\s$'\'' * || echo "--None--" '
+alias ws='grep --binary-files=without-match '\''\s$'\'' * '

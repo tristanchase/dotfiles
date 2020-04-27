@@ -140,6 +140,8 @@ vnoremap	<leader>*	<esc>`<i*<esc>`>a*<esc>
 nnoremap	<leader>kb	:!grep "^\w*map\!*\s" $MYVIMRC <bar> sort -k2 -k1 > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR>| " Show mappings in this file
 nnoremap	<leader>n	:cnext<cr>
 nnoremap	<leader>p	:cprevious<cr>
+inoremap	<leader>se	#-----------------------------------
+nnoremap	<leader>se	i#-----------------------------------<esc>
 inoremap	<leader>v	"${}"<esc>hi
 nnoremap	<leader>ws	:highlight TrailWS ctermbg=cyan<CR> :match TrailWS /\v\s+$/<CR>
 nnoremap	<localleader>ws :match<CR>

@@ -16,7 +16,7 @@ set wildmenu
 set encoding=utf-8
 set splitbelow
 set splitright
-set spell spelllang=en_us
+"set spell spelllang=en_us
 " EndSet
 "}}}
 " Conditionals"{{{

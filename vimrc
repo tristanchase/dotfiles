@@ -16,6 +16,7 @@ set wildmenu
 set encoding=utf-8
 set splitbelow
 set splitright
+set spell spelllang=en_us
 " EndSet
 "}}}
 " Conditionals"{{{
@@ -107,81 +108,83 @@ endif " has("autocmd")
 " Silly little mappings that make my life easier ;)
 let mapleader = ","
 let maplocalleader = "_"
-inoremap	jk		<ESC>
-nnoremap	Y		y$
-nnoremap	<Space><Space>	<PageDown>L
-nnoremap	<Space>k	<PageUp>H
-nnoremap	<Space>j	<PageDown>L
-nnoremap	Q		:q!
-"nnoremap	<Space>so	:source $MYVIMRC<CR>
-nnoremap	<Space>so	:source %<CR>
-nnoremap	<Space>vv	:tabe $MYVIMRC<CR>
-nnoremap	<Space>bb	:tabe $HOME/.bashrc<CR>
-nnoremap	<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
-nnoremap	<Space>ww	<C-w>w
-nnoremap	<Space>wh	<C-w>h
-nnoremap	<Space>wl	<C-w>l
-nnoremap	<Space>wk	<C-w>k
-nnoremap	<Space>wj	<C-w>j
-nnoremap	j		jzz
-nnoremap	k		kzz
-nnoremap	n		nzz
-nnoremap	N		Nzz
-nnoremap	*		*zz
-nnoremap	#		#zz
+map!		<C-F>		<Esc>gUiw`]a| " Make word before cursor UPPERCASE
+inoremap	<C-g><C-t>	<C-r>=strftime("%F")<CR>| " Vimways.org: insert date inline
+inoremap	<C-U>		<C-G>u<C-U>
 nnoremap	g*		g*zz
 nnoremap	g#		g#zz
-nnoremap	th		:tab help |
-nnoremap	<Space>qq	:q!
-nnoremap	<Space>hh	:w<CR>
-nnoremap	<Space>wq	:wq
-nnoremap	<Space>sa	ggVG| " Select all
-nnoremap	<Space>fi	:find ./.**/
-map!		<C-F>		<Esc>gUiw`]a| " Make word before cursor UPPERCASE
-nnoremap	<leader>kb	:!grep "^\w*map\!*\s" $MYVIMRC > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR>| " Show mappings in this file
-nnoremap	<Space>gf	:winc gF<CR>| " Open the file (on line number) in new tab
-nnoremap	<Return>	:winc gF<CR>| " Open the file (on line number) in new tab
-nnoremap	<Space>gr	:r <cfile><CR>| " Read contents of the file under the cursor into the current file
-nnoremap	<Space>li	:set list!<CR>| " Toggle hidden characters
-nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx| " Insert the date in YYYY-MM-DD format inline just before cursor position
-inoremap	<C-g><C-t>	<C-r>=strftime("%F")<CR>| " Vimways.org: insert date inline
-nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR>| " Insert the date in YYYY-MM-DD Day format and insert two lines
-nnoremap	<Space>ti	:r !date +\%R<CR>| " Insert the time in HH:MM format
-nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx| " Mark a gtd task complete
-nnoremap	<Space>do	md:g/^\s*+/m$<CR>:set nohls<CR>`d| " Move completed tasks to the bottom of the list
-nnoremap	<leader>ws	:highlight TrailWS ctermbg=cyan<CR> :match TrailWS /\v\s+$/<CR>
-nnoremap	<localleader>ws :match<CR>
-nnoremap	<Space>ws	:%s/\s\+$//eg<CR>| " Find and kill trailing whitespace
-nnoremap	<Space>ns	/\zs\\.*section\ze[^ ]<CR>zz| " Find next section in LaTeX
-nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz| " Find previous section in LaTeX
-nnoremap	<Space>ok	A<Tab>%OK TMC<Esc>
-inoremap	<C-U>		<C-G>u<C-U>
-vnoremap	.		:norm.<CR>
-nnoremap	<Space>hl	:set nohls!<CR>
-vnoremap	<leader>'	<esc>`<i'<esc>`>a'<esc>
-vnoremap	<leader>*	<esc>`<i*<esc>`>a*<esc>
-vnoremap	<leader>"	<esc>`<i"<esc>`>a"<esc>
-vnoremap	<leader>(	<esc>`<i(<esc>`>a)<esc>
-vnoremap	<leader>[	<esc>`<i[<esc>`>a]<esc>
-vnoremap	<leader>{	<esc>`<i{<esc>`>a}<esc>
-vnoremap	<leader><	<esc>`<i<<esc>`>a><esc>
-vnoremap	<leader>`	<esc>`<i`<esc>`>a'<esc>
-vnoremap	<leader>``	<esc>`<i``<esc>`>a''<esc>
+nnoremap	H		0
+nnoremap	j		jzz
+inoremap	jk		<ESC>
+nnoremap	k		kzz
+nnoremap	L		$
+inoremap	<leader>``	``''<esc>hi
+inoremap	<leader>`	`'<esc>i
+inoremap	<leader><	<><esc>i
 inoremap	<leader>'	''<esc>i
-inoremap	<leader>*	**<esc>i
 inoremap	<leader>"	""<esc>i
 inoremap	<leader>(	()<esc>i
 inoremap	<leader>[	[]<esc>i
 inoremap	<leader>{	{}<esc>i
-inoremap	<leader><	<><esc>i
-inoremap	<leader>`	`'<esc>i
-inoremap	<leader>``	``''<esc>hi
-nnoremap	H		0
-nnoremap	L		$
-nnoremap	/		/\v
+inoremap	<leader>*	**<esc>i
+vnoremap	<leader>``	<esc>`<i``<esc>`>a''<esc>
+vnoremap	<leader>`	<esc>`<i`<esc>`>a'<esc>
+vnoremap	<leader><	<esc>`<i<<esc>`>a><esc>
+vnoremap	<leader>'	<esc>`<i'<esc>`>a'<esc>
+vnoremap	<leader>"	<esc>`<i"<esc>`>a"<esc>
+vnoremap	<leader>(	<esc>`<i(<esc>`>a)<esc>
+vnoremap	<leader>[	<esc>`<i[<esc>`>a]<esc>
+vnoremap	<leader>{	<esc>`<i{<esc>`>a}<esc>
+vnoremap	<leader>*	<esc>`<i*<esc>`>a*<esc>
 "nnoremap	<leader>g	:silent exe "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+nnoremap	<leader>kb	:!grep "^\w*map\!*\s" $MYVIMRC <bar> sort -k2 -k1 > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR>| " Show mappings in this file
 nnoremap	<leader>n	:cnext<cr>
 nnoremap	<leader>p	:cprevious<cr>
+inoremap	<leader>v	"${}"<esc>hi
+nnoremap	<leader>ws	:highlight TrailWS ctermbg=cyan<CR> :match TrailWS /\v\s+$/<CR>
+nnoremap	<localleader>ws :match<CR>
+nnoremap	n		nzz
+nnoremap	N		Nzz
+vnoremap	.		:norm.<CR>
+nnoremap	Q		:q!
+nnoremap	<Return>	:winc gF<CR>| " Open the file (on line number) in new tab
+nnoremap	<Space>bb	:tabe $HOME/.bashrc<CR>
+nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx| " Mark a gtd task complete
+nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR>| " Insert the date in YYYY-MM-DD Day format and insert two lines
+nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx| " Insert the date in YYYY-MM-DD format inline just before cursor position
+nnoremap	<Space>do	md:g/^\s*+/m$<CR>:set nohls<CR>`d| " Move completed tasks to the bottom of the list
+nnoremap	<Space>fi	:find ./.**/
+nnoremap	<Space>gf	:winc gF<CR>| " Open the file (on line number) in new tab
+nnoremap	<Space>gr	:r <cfile><CR>| " Read contents of the file under the cursor into the current file
+nnoremap	<Space>hh	:w<CR>
+nnoremap	<Space>hl	:set nohls!<CR>
+nnoremap	<Space>j	<PageDown>L
+nnoremap	<Space>k	<PageUp>H
+nnoremap	<Space>li	:set list!<CR>| " Toggle hidden characters
+nnoremap	<Space>ns	/\zs\\.*section\ze[^ ]<CR>zz| " Find next section in LaTeX
+nnoremap	<Space>ok	A<Tab>%OK TMC<Esc>
+nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz| " Find previous section in LaTeX
+nnoremap	<Space>qq	:q!
+nnoremap	<Space>sa	ggVG| " Select all
+nnoremap	<Space>so	:source $MYVIMRC<CR>
+nnoremap	<Space><Space>	<PageDown>L
+nnoremap	<Space>sp	:set nospell!<cr>
+nnoremap	<Space>te	:tabe<cr>
+nnoremap	<Space>ti	:r !date +\%R<CR>| " Insert the time in HH:MM format
+nnoremap	<Space>vv	:tabe $MYVIMRC<CR>
+nnoremap	<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)
+nnoremap	<Space>wh	<C-w>h
+nnoremap	<Space>wj	<C-w>j
+nnoremap	<Space>wk	<C-w>k
+nnoremap	<Space>wl	<C-w>l
+nnoremap	<Space>wq	:wq
+nnoremap	<Space>ws	:%s/\s\+$//eg<CR>| " Find and kill trailing whitespace
+nnoremap	<Space>ww	<C-w>w
+nnoremap	th		:tab help |
+nnoremap	/		/\v
+nnoremap	Y		y$
+nnoremap	*		*zz
+nnoremap	#		#zz
 " EndMyMappings
 "}}}
 " Netrw"{{{

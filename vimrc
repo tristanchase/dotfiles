@@ -160,8 +160,11 @@ nnoremap	<Space>gf	:winc gF<CR>| " Open the file (on line number) in new tab
 nnoremap	<Space>gr	:r <cfile><CR>| " Read contents of the file under the cursor into the current file
 nnoremap	<Space>hh	:w<CR>
 nnoremap	<Space>hl	:set nohls!<CR>
+
 nnoremap	<Space>j	<PageDown>L
 nnoremap	<Space>k	<PageUp>H
+nnoremap	<Space>lb	o<Esc>me:r !date -Iminutes<CR>A <Esc>0D`ePJxI#log_begin <Esc>| " Insert "#log_begin " and the date in ISO 8601 format on a new line below the cursor.
+nnoremap	<Space>le	o<Esc>me:r !date -Iminutes<CR>A <Esc>0D`ePJxI#log_end <Esc>A (0 hrs 00 min)<Esc>3F0| " Insert "#log_end ",  the date in ISO 8601 format, and "(0 hrs 00 min)" on a new line below the cursor and go to the 0 before hrs.
 nnoremap	<Space>li	:set list!<CR>| " Toggle hidden characters
 nnoremap	<Space>ns	/\zs\\.*section\ze[^ ]<CR>zz| " Find next section in LaTeX
 nnoremap	<Space>ok	A<Tab>%OK TMC<Esc>
@@ -182,7 +185,7 @@ nnoremap	<Space>wl	<C-w>l
 nnoremap	<Space>wq	:wq
 nnoremap	<Space>ws	:%s/\s\+$//eg<CR>| " Find and kill trailing whitespace
 nnoremap	<Space>ww	<C-w>w
-nnoremap	th		:tab help |
+nnoremap	<Space>th		:tab help |
 nnoremap	/		/\v
 nnoremap	Y		y$
 nnoremap	*		*zz
@@ -215,8 +218,8 @@ set t_Co=256
 let g:solarized_termcolors=256
 call pathogen#infect()
 syntax on
-"set background=light " dark | light "
-set background=dark " dark | light "
+set background=light " dark | light "
+"set background=dark " dark | light "
 colorscheme solarized
 "filetype plugin on
 set cursorline

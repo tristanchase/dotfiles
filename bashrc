@@ -165,3 +165,6 @@ bind 'set show-mode-in-prompt on'
 # Disables Ctrl-S flow control (which stops the terminal)
 #stty -ixon
 stty ixany # Lets any key resume
+
+# Allow bash to expand subdirectories and files using '**'
+shopt -s globstar

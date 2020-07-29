@@ -98,7 +98,7 @@ ANCHOR=$(echo -e "\xE2\x9A\x93")
 
 # Prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}'$EMM'[$TMUX_PANE/$TOPLVL/$SHLVL]'$EMG'\u@\h'$NONE':'$EMB'\w$(__git_ps1 " (%s)")'$NONE'\$ '
+	PS1='${debian_chroot:+($debian_chroot)}'$EMM'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$EMG'\u@\h'$NONE':'$EMB'\w$(__git_ps1 " (%s)")'$NONE'\$ '
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 fi

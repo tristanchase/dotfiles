@@ -1,5 +1,8 @@
 ## alias stuff
 
+# Source jack-jack to teleport between directories in $HOME: go <dir>
+alias go='. ~/bin/jack-jack'
+
 # Anchor your top-level shell
 alias anchor='export TOPLVL=$SHLVL; PS1=$ANCHOR"$PS1"'
 

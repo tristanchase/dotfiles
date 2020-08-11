@@ -65,10 +65,10 @@ if has("autocmd")
 
 	augroup MapComment
 		autocmd!
-		autocmd FileType bash	 nnoremap <buffer> <localleader>c I#<esc>
-		autocmd FileType sh	 nnoremap <buffer> <localleader>c I#<esc>
-		autocmd FileType conf	 nnoremap <buffer> <localleader>c I#<esc>
-		autocmd FileType vim	 nnoremap <buffer> <localleader>c 0i"<esc>
+		autocmd FileType bash	 nnoremap <buffer> <Space>cm I#<esc>
+		autocmd FileType sh	 nnoremap <buffer> <Space>cm I#<esc>
+		autocmd FileType conf	 nnoremap <buffer> <Space>cm I#<esc>
+		autocmd FileType vim	 nnoremap <buffer> <Space>cm 0i"<esc>
 	augroup END
 
 	augroup filetype_html

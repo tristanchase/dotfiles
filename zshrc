@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="mytheme"
+ZSH_THEME="mainline"
 
 # Example aliases (my aliases are defined in ~/.oh-my-zsh/lib/misc.zsh TMC)
 # alias zshconfig="mate ~/.zshrc"
@@ -51,6 +51,13 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Git prompt tricks
+source ~/.git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=true      # staged '+', unstaged '*'
+export GIT_PS1_SHOWUNTRACKEDFILES=true  # '%' untracked files
+export GIT_PS1_SHOWUPSTREAM="auto"      # '<' behind, '>' ahead, '<>' diverged, '=' no difference
+export GIT_PS1_SHOWSTASHSTATE=true      # '$' something is stashed
+
 export PATH="$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games"
 export PATH="$PATH:$HOME/.vim/bundle/vim-live-latex-preview/bin" #For viewing LaTeX changes on the fly (http://lukesmith.xyz/latex.html)
 export GTDDIR="$HOME/gtd"
@@ -79,8 +86,8 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 
 # Indicates mode
-vim_ins_mode="%{$fg_bold[red]$bg[black]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg_bold[green]$bg[black]%}[CMD]%{$reset_color%}"
+vim_ins_mode="%{$fg_bold[green]%}[INS]%{$reset_color%}"
+vim_cmd_mode="%{$fg_bold[red]%}[CMD]%{$reset_color%}"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {

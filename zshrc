@@ -49,6 +49,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+ANCHOR=$(echo -e "\xE2\x9A\x93")
+
 # User configuration
 
 # Git prompt tricks

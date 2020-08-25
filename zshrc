@@ -88,8 +88,10 @@ bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 
 # Indicates mode
-vim_ins_mode="%{$fg_bold[green]%}[INS]%{$reset_color%}"
-vim_cmd_mode="%{$fg_bold[red]%}[CMD]%{$reset_color%}"
+#vim_ins_mode="%{$fg_bold[green]%}[INS]%{$reset_color%}"
+vim_ins_mode="%B%F{28}[INS]%f%b"
+#vim_cmd_mode="%{$fg_bold[red]%}[CMD]%{$reset_color%}"
+vim_cmd_mode="%B%F{red}[CMD]%f%b"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {
@@ -113,7 +115,7 @@ function TRAPINT() {
 
 # Tells tmux that terminal type is 256 color
 export TERM="screen-256color"
-alias tmux-"tmux -2"
+alias tmux="tmux -2"
 
 # Disables Ctrl-S flow control (which stops the terminal)
 #stty -ixon

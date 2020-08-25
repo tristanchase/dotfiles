@@ -31,37 +31,37 @@ fi
 
 # Colors
 
-NONE="\[\033[0m\]"    # unsets color to term's fg color
+COLOR_DEFAULT="\[\033[0m\]"    # unsets color to term's fg color
 
 # regular colors
-K="\[\033[0;30m\]"    # black
-R="\[\033[0;31m\]"    # red
-G="\[\033[0;32m\]"    # green
-Y="\[\033[0;33m\]"    # yellow
-B="\[\033[0;34m\]"    # blue
-M="\[\033[0;35m\]"    # magenta
-C="\[\033[0;36m\]"    # cyan
-W="\[\033[0;37m\]"    # white
+COLOR_NORMAL_BLACK="\[\033[0;30m\]"
+COLOR_NORMAL_RED="\[\033[0;31m\]"
+COLOR_NORMAL_GREEN="\[\033[0;32m\]"
+COLOR_NORMAL_YELLOW="\[\033[0;33m\]"
+COLOR_NORMAL_BLUE="\[\033[0;34m\]"
+COLOR_NORMAL_MAGENTA="\[\033[0;35m\]"
+COLOR_NORMAL_CYAN="\[\033[0;36m\]"
+COLOR_NORMAL_WHITE="\[\033[0;37m\]"
 
 # empahsized (bolded) colors
-EMK="\[\033[1;30m\]"
-EMR="\[\033[1;31m\]"
-EMG="\[\033[1;32m\]"
-EMY="\[\033[1;33m\]"
-EMB="\[\033[1;34m\]"
-EMM="\[\033[1;35m\]"
-EMC="\[\033[1;36m\]"
-EMW="\[\033[1;37m\]"
+COLOR_BOLD_BLACK="\[\033[1;30m\]"
+COLOR_BOLD_RED="\[\033[1;31m\]"
+COLOR_BOLD_GREEN="\[\033[1;32m\]"
+COLOR_BOLD_YELLOW="\[\033[1;33m\]"
+COLOR_BOLD_BLUE="\[\033[1;34m\]"
+COLOR_BOLD_MAGENTA="\[\033[1;35m\]"
+COLOR_BOLD_CYAN="\[\033[1;36m\]"
+COLOR_BOLD_WHITE="\[\033[1;37m\]"
 
 # background colors
-BGK="\[\033[40m\]"
-BGR="\[\033[41m\]"
-BGG="\[\033[42m\]"
-BGY="\[\033[43m\]"
-BGB="\[\033[44m\]"
-BGM="\[\033[45m\]"
-BGC="\[\033[46m\]"
-BGW="\[\033[47m\]"
+COLOR_BACKGROUND_BLACK="\[\033[40m\]"
+COLOR_BACKGROUND_RED="\[\033[41m\]"
+COLOR_BACKGROUND_GREEN="\[\033[42m\]"
+COLOR_BACKGROUND_YELLOW="\[\033[43m\]"
+COLOR_BACKGROUND_BLUE="\[\033[44m\]"
+COLOR_BACKGROUND_MAGENTA="\[\033[45m\]"
+COLOR_BACKGROUND_CYAN="\[\033[46m\]"
+COLOR_BACKGROUND_WHITE="\[\033[47m\]"
 # EndColors
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -91,6 +91,7 @@ export GIT_PS1_SHOWDIRTYSTATE=true      # staged '+', unstaged '*'
 export GIT_PS1_SHOWUNTRACKEDFILES=true  # '%' untracked files
 export GIT_PS1_SHOWUPSTREAM="auto"      # '<' behind, '>' ahead, '<>' diverged, '=' no difference
 export GIT_PS1_SHOWSTASHSTATE=true      # '$' something is stashed
+export GIT_PS1_SHOWCOLORHINTS=true
 
 # $SHLVL prompt tricks
 #TOPLVL=
@@ -98,7 +99,7 @@ ANCHOR=$(echo -e "\xE2\x9A\x93")
 
 # Prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}'$EMM'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$EMG'\u@\h'$NONE':'$EMB'\w'$EMC'$(__git_ps1 " (%s)")'$NONE'\n'$NONE'\$ '
+	PS1='${debian_chroot:+($debian_chroot)}'$COLOR_BOLD_MAGENTA'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$COLOR_BOLD_GREEN'\u@\h'$COLOR_DEFAULT':'$COLOR_BOLD_BLUE'\w'$COLOR_BOLD_CYAN'$(__git_ps1 " (%s)")'$COLOR_DEFAULT'\n'$COLOR_DEFAULT'\$ '
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 fi

@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc emacs bash_aliases git-prompt.sh inputrc "    # list of files/folders to symlink in homedir
+files="bashrc vimrc emacs bash_aliases git-prompt.sh inputrc colors.sh"    # list of files/folders to symlink in homedir
 
 ##########
 

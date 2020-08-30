@@ -1,21 +1,23 @@
-set nocompatible
+scriptencoding utf-8
 execute pathogen#infect()
 " Set statements"{{{
 set backspace=indent,eol,start
 set backup
 set backupdir=~/.vim/tmp//,.
 set directory=~/.vim/tmp//,.
+set encoding=utf-8
 set history=50
-set ruler
-set showcmd
 set incsearch
 set ignorecase smartcase
+set listchars=space:·,tab:<>,nbsp:‗,eol:$,trail:§
+set nocompatible
 set number
 set path=.,/usr/include,,,~,**	" Fuzzy find-type settings from https://youtu.be/XA2WjJbmmoM
-set wildmenu
-set encoding=utf-8
+set ruler
+set showcmd
 set splitbelow
 set splitright
+set wildmenu
 "set spell spelllang=en_us
 " EndSet
 "}}}
@@ -47,6 +49,16 @@ endif
 if has("autocmd")
 
 	filetype plugin indent on
+
+	augroup CleanUp
+		autocmd!
+		autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkmagenta guibg=red
+		"match ExtraWhitespace /\s\+$/
+		autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+		autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+		autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+		autocmd BufWinLeave * call clearmatches()
+	augroup END
 
 	augroup vimrcEx
 		au!
@@ -143,8 +155,8 @@ nnoremap	<leader>p	:cprevious<cr>
 inoremap	<leader>se	#-----------------------------------
 nnoremap	<leader>se	i#-----------------------------------<esc>
 inoremap	<leader>v	"${}"<esc>hi
-nnoremap	<leader>ws	:highlight TrailWS ctermbg=cyan<CR> :match TrailWS /\v\s+$/<CR>
-nnoremap	<localleader>ws :match<CR>
+"nnoremap	<leader>ws	:highlight TrailWS ctermbg=5<CR> :match TrailWS /\v\s+$/<CR>
+"nnoremap	<localleader>ws :match<CR>
 nnoremap	n		nzz
 nnoremap	N		Nzz
 vnoremap	.		:norm.<CR>
@@ -153,7 +165,8 @@ nnoremap	<Return>	:winc gF<CR>| " Open the file (on line number) in new tab
 nnoremap	<Space>bb	:tabe $HOME/.bashrc<CR>
 nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx| " Mark a gtd task complete
 nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR>| " Insert the date in YYYY-MM-DD Day format and insert two lines
-nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx| " Insert the date in YYYY-MM-DD format inline just before cursor position
+"nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx| " Insert the date in YYYY-MM-DD format inline just before cursor position
+nnoremap	<Space>di	me:r !date -Iseconds<CR>A <Esc>0D`epJx| " Insert the date inline just after cursor position
 nnoremap	<Space>do	md:g/^\s*+/m$<CR>:set nohls<CR>`d| " Move completed tasks to the bottom of the list
 nnoremap	<Space>fi	:find ./.**/
 nnoremap	<Space>gf	:winc gF<CR>| " Open the file (on line number) in new tab
@@ -202,15 +215,15 @@ let g:netrw_fastbrowse = 0 " Possibly gets rid of [RO] netrw buffers: https://gi
 "}}}
 " LaTeX"{{{
 " These may be useful for working with LaTeX.
-set wrap
-set linebreak
-set nolist
-set textwidth=0
-set wrapmargin=0
-"filetype plugin on
-set grepprg=grep\ -nH\ $*
-"filetype indent on
-let g:tex_flavor='latex'
+"set wrap
+"set linebreak
+"set nolist
+"set textwidth=0
+"set wrapmargin=0
+""filetype plugin on
+"set grepprg=grep\ -nH\ $*
+""filetype indent on
+"let g:tex_flavor='latex'
 " EndLaTeX
 "}}}
 " Solarized colorscheme"{{{
@@ -224,7 +237,7 @@ colorscheme solarized
 "filetype plugin on
 set cursorline
 set cursorcolumn
-"set colorcolumn=80
+set colorcolumn=80
 call togglebg#map("<F5>")
 " EndSolarized
 "}}}

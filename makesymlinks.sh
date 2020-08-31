@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc emacs bash_aliases git-prompt.sh inputrc colors.sh"    # list of files/folders to symlink in homedir
+files="bash_aliases bashrc colors.sh emacs functions.sh git-prompt.sh inputrc vimrc zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -27,16 +27,19 @@ echo "done"
 echo "Moving any existing dotfiles from ~ to $olddir ..."
 for file in $files; do
 	touch ~/.$file
-	mv --backup=t ~/.$file ~/dotfiles_old/
+	mv --backup=t ~/.$file $olddir
 	echo "Creating symlink to $file in home directory."
 	ln -s $dir/$file ~/.$file
-	if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-		ln -s $dir/zshrc ~/.zshrc
-	fi
-	if [ -d ~/.oh-my-zsh/ ]; then
-		ln -s $dir/mytheme.zsh-theme ~/.oh-my-zsh/themes
-	fi
 done
+
+#if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
+#	ln -s $dir/zshrc ~/.zshrc
+#fi
+
+#if [ -d ~/.oh-my-zsh/ ]; then
+#	ln -s $dir/mytheme.zsh-theme ~/.oh-my-zsh/themes
+#fi
+
 echo "Done."
 
 # install_zsh () {

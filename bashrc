@@ -31,6 +31,11 @@ fi
 
 # Colors
 
+if [[ -e ~/.colors.sh ]]; then
+	source ~/.colors.sh
+fi
+
+
 COLOR_DEFAULT="\[\033[0m\]"    # unsets color to term's fg color
 
 # regular colors
@@ -86,12 +91,15 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 # Git prompt tricks
-source ~/.git-prompt.sh
-export GIT_PS1_SHOWDIRTYSTATE=true      # staged '+', unstaged '*'
-export GIT_PS1_SHOWUNTRACKEDFILES=true  # '%' untracked files
-export GIT_PS1_SHOWUPSTREAM="auto"      # '<' behind, '>' ahead, '<>' diverged, '=' no difference
-export GIT_PS1_SHOWSTASHSTATE=true      # '$' something is stashed
-export GIT_PS1_SHOWCOLORHINTS=true
+
+if [[ -e ~/.git-prompt.sh ]]; then
+	source ~/.git-prompt.sh
+	export GIT_PS1_SHOWDIRTYSTATE=true      # staged '+', unstaged '*'
+	export GIT_PS1_SHOWUNTRACKEDFILES=true  # '%' untracked files
+	export GIT_PS1_SHOWUPSTREAM="auto"      # '<' behind, '>' ahead, '<>' diverged, '=' no difference
+	export GIT_PS1_SHOWSTASHSTATE=true      # '$' something is stashed
+	export GIT_PS1_SHOWCOLORHINTS=true
+fi
 
 # $SHLVL prompt tricks
 #TOPLVL=
@@ -104,7 +112,6 @@ else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 fi
 unset color_prompt force_color_prompt
-# EndPrompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -114,6 +121,16 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+# EndPrompt
+
+# Functions
+
+if [[ -e ~/.functions.sh ]]; then
+	source ~/.functions.sh
+fi
+
+# EndFunctions
+
 # Alias
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -169,3 +186,4 @@ stty ixany # Lets any key resume
 
 # Allow bash to expand subdirectories and files using '**'
 shopt -s globstar
+shopt -s nullglob

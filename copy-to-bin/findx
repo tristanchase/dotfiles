@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# 2019-11-24
+# Tristan M. Chase
+
+# findx: Find a file in your executable paths. *paths* is a separate script.
+
+find `paths` 2>/dev/null | grep "$1" | more

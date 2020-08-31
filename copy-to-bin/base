@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# base
+
+base=$1
+expression=${@:2}
+
+expr \( $expression \) % $base

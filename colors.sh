@@ -1,5 +1,10 @@
 #!/bin/bash
 
+__light_green() { printf "\e["${i}";2;%d;%d;%dm" 0x00 0xFF 0x99; }
+__celeste() { printf "\e["${i}";2;%d;%d;%dm" 0xB9 0xCE 0xB0; }
+__orange() { printf "\e["${i}";2;%d;%d;%dm" 0xFF 0x66 0x00; }
+__black() { printf "\e["${i}";2;%d;%d;%dm" 0x00 0x00 0x00; }
+
 #Regular text
 BLK="\e[0;30m"
 RED="\e[0;31m"
@@ -9,6 +14,11 @@ BLU="\e[0;34m"
 MAG="\e[0;35m"
 CYN="\e[0;36m"
 WHT="\e[0;37m"
+i="0;38"
+light_green_fg="$(__light_green)"
+celeste_fg="$(__celeste)"
+orange_fg="$(__orange)"
+black_fg="$(__black)"
 
 #Regular bold text
 BBLK="\e[1;30m"
@@ -19,6 +29,11 @@ BBLU="\e[1;34m"
 BMAG="\e[1;35m"
 BCYN="\e[1;36m"
 BWHT="\e[1;37m"
+i="1;38"
+light_green_bold="$(__light_green)"
+celeste_bold="$(__celeste)"
+orange_bold="$(__orange)"
+black_bold="$(__black)"
 
 #Regular underline text
 UBLK="\e[4;30m"
@@ -29,6 +44,11 @@ UBLU="\e[4;34m"
 UMAG="\e[4;35m"
 UCYN="\e[4;36m"
 UWHT="\e[4;37m"
+i="4;38"
+light_green_ul="$(__light_green)"
+celeste_ul="$(__celeste)"
+orange_ul="$(__orange)"
+black_ul="$(__black)"
 
 #Regular background
 BLKB="\e[40m"
@@ -39,6 +59,12 @@ BLUB="\e[44m"
 MAGB="\e[45m"
 CYNB="\e[46m"
 WHTB="\e[47m"
+i="48"
+light_green_bg="$(__light_green)"
+celeste_bg="$(__celeste)"
+orange_bg="$(__orange)"
+black_bg="$(__black)"
+
 
 #High intensty background
 BLKHB="\e[0;100m"
@@ -72,3 +98,4 @@ BHWHT="\e[1;97m"
 
 #Reset
 reset="\e[0m"
+reset_colors="\e[0m"

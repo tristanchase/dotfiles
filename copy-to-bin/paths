@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# paths
+
+# 2019-11-24
+# Tristan M. Chase
+
+# Splits the paths listed in $PATH into separate lines.
+
+echo $PATH | sed 's/:/\n/g' | uniq

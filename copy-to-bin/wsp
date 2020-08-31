@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [[ -e ~/.colors.sh ]]; then
+	source ~/.colors.sh
+fi
+
+_dir="$(pwd)"
+
+# Find files with trailing whitespace (but not .pdf's or other binary files)
+function __find_trailing_whitespace {
+	if [[ -n "$(grep -r --files-with-matches --binary-files=without-match '\s$' 2>/dev/null "${_dir}"/*)" ]]; then
+
+		printf "${black_fg:-}${light_green_bg:-}%s\n" ">>>These files have trailing whitespace:"
+		grep -r --files-with-matches --binary-files=without-match '\s$' 2>/dev/null "${_dir}"/*| xargs realpath
+
+		printf ""${reset_colors:-}""
+	fi
+}
+
+__find_trailing_whitespace

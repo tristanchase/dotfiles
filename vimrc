@@ -155,6 +155,7 @@ nnoremap	<leader>p	:cprevious<cr>
 inoremap	<leader>se	#-----------------------------------
 nnoremap	<leader>se	i#-----------------------------------<esc>
 inoremap	<leader>v	"${}"<esc>hi
+inoremap	<leader>x	"$()"<esc>hi
 "nnoremap	<leader>ws	:highlight TrailWS ctermbg=5<CR> :match TrailWS /\v\s+$/<CR>
 "nnoremap	<localleader>ws :match<CR>
 nnoremap	n		nzz

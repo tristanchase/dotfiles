@@ -24,7 +24,7 @@ ZSH_THEME="mainline"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want to disable command autocorrection
 # DISABLE_CORRECTION="true"
@@ -52,6 +52,10 @@ source $ZSH/oh-my-zsh.sh
 ANCHOR=$(echo -e "\xE2\x9A\x93")
 
 # User configuration
+
+if [[ -e ~/.functions.sh ]]; then
+	source ~/.functions.sh
+fi
 
 # Git prompt tricks
 source ~/.git-prompt.sh
@@ -89,9 +93,9 @@ bindkey '^R' history-incremental-search-backward
 
 # Indicates mode
 #vim_ins_mode="%{$fg_bold[green]%}[INS]%{$reset_color%}"
-vim_ins_mode="%B%F{28}[INS]%f%b"
+vim_ins_mode="%B%F{41}[INS]%f%b"
 #vim_cmd_mode="%{$fg_bold[red]%}[CMD]%{$reset_color%}"
-vim_cmd_mode="%B%F{red}[CMD]%f%b"
+vim_cmd_mode="%B%F{196}[CMD]%f%b"
 vim_mode=$vim_ins_mode
 
 function zle-keymap-select {

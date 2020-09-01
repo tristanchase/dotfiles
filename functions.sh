@@ -22,35 +22,17 @@ if [[ -e ~/.colors.sh ]]; then
 fi
 
 function __be_root__ {
-# Test rootworthiness of user.
+# Test rootworthiness of user. Be wary. Check this.
 	test $( id -u )  -eq 0 || exec sudo $0 "$@"
 }
 
-function __find_trailing_whitespace__ {
-# Find files with trailing whitespace (but not .pdf's or other binary files)
-	if [[ -n "$(grep -r --files-with-matches --binary-files=without-match '\s$' 2>/dev/null "${_dir}"/*)" ]]; then
-		printf "${WHT:-}${CYNB:-}%s\n" ">>>These files have trailing whitespace:"
-		grep -r  --files-with-matches --binary-files=without-match '\s$' 2>/dev/null "${_dir}"/* | xargs realpath
-		printf ""${reset:-}"%b\n"
-	fi
-}
-
-function __debugger__ {
-# Low-tech debug mode
-if [[ "${1:-}" =~ (-d|--debug) ]]; then
-	set -o verbose
-	set -o xtrace
-	_debug_file=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}")-debug-$(date -Iseconds)"
-	mkdir -p $(dirname ${_debug_file})
-        touch ${_debug_file}
-	exec > >(tee "${_debug_file:-}") 2>&1
-	shift
-fi
-}
-
-function __check_dependencies__
+#function __check_dependencies__
 
 function __cleanup__ {
+	if [[ -n "${_tempfiles:-}" ]]; then
+		rm "$(printf "%b\n" "${_tempfiles:-}")"
+	fi
+
 	case "$?" in
 		0) # exit 0; success!
 			#do nothing
@@ -91,6 +73,29 @@ function __cleanup__ {
 
 function __ctrl_c__ { exit 130 ; }
 
+function __debugger__ {
+# Low-tech debug mode
+	set -o verbose
+	set -o xtrace
+	_debug_file=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}")-$(date -Iseconds).debug.$$"
+	mkdir -p $(dirname ${_debug_file})
+        touch ${_debug_file}
+	exec > >(tee "${_debug_file:-}") 2>&1
+	shift
+}
+
+function __find_trailing_whitespace__ {
+	# Find files with trailing whitespace (but not .pdf's or other binary files)
+	_dir="$(pwd)"
+	# Add -r to grep for recursive search
+	_whitespace=( "$(grep --files-with-matches --binary-files=without-match '\s$' 2>/dev/null "${_dir}"/*)" )
+	if [[ -n "${_whitespace[@]}" ]]; then
+		printf "${black_fg:-}${light_green_bg:-}%s\n" ">>>These files have trailing whitespace:"
+		printf "%b\n" "${_whitespace[@]}" | xargs realpath
+		printf ""${reset:-}"%b\n"
+	fi
+}
+
 function __logger__ {
 readonly LOG_FILE=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}").log"
 mkdir -p $(dirname ${LOG_FILE})
@@ -98,13 +103,12 @@ mkdir -p $(dirname ${LOG_FILE})
 function __info__    { echo "$(date -Iseconds) [INFO]    $*" | tee -a "${LOG_FILE}" >&2 ; }
 function __warning__ { echo "$(date -Iseconds) [WARNING] $*" | tee -a "${LOG_FILE}" >&2 ; }
 function __error__   { echo "$(date -Iseconds) [ERROR]   $*" | tee -a "${LOG_FILE}" >&2 ; }
-function __fatal__   { echo "$(date -Iseconds) [FATAL]   $*" | tee -a "${LOG_FILE}" >&2 ; exit 1 ; }
+function __fatal__   { echo "$(date -Iseconds) [FATAL]   $*" | tee -a "${LOG_FILE}" >&2 ; }
 
-function __options__
+#function __options__
 
-function __trap_err__ {
+function __traperr__ {
 	 "${FUNCNAME[1]}: ${BASH_COMMAND}: $?: ${BASH_SOURCE[1]}.$$ at line ${BASH_LINENO[0]}"
-	 #__error__ "${FUNCNAME[1]}: ${BASH_COMMAND}: $?: ${BASH_SOURCE[1]}.$$ at line ${BASH_LINENO[0]}"
 }
 
 

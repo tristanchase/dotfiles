@@ -123,13 +123,13 @@ xterm*|rxvt*)
 esac
 # EndPrompt
 
-## Functions
-#
-#if [[ -e ~/.functions.sh ]]; then
-#	source ~/.functions.sh
-#fi
-#
-## EndFunctions
+# Functions
+
+if [[ -e ~/.functions.sh ]]; then
+	source ~/.functions.sh
+fi
+
+# EndFunctions
 
 # Alias
 # enable color support of ls and also add handy aliases

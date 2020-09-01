@@ -96,9 +96,13 @@ function __find_trailing_whitespace__ {
 	fi
 }
 
+function __it_works__ {
+	printf ""${orange_bold}"%s\n"${reset_colors}"" "It works!"
+}
+
 function __logger__ {
-readonly LOG_FILE=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}").log"
-mkdir -p $(dirname ${LOG_FILE})
+	readonly LOG_FILE=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}").log"
+	mkdir -p $(dirname ${LOG_FILE})
 }
 function __info__    { echo "$(date -Iseconds) [INFO]    $*" | tee -a "${LOG_FILE}" >&2 ; }
 function __warning__ { echo "$(date -Iseconds) [WARNING] $*" | tee -a "${LOG_FILE}" >&2 ; }
@@ -116,3 +120,29 @@ function __usage__ {
 	# Low-tech help option. Begin any lines you want to include with "#//".
 	grep '^#//' "${0}" | cut -c4- ; exit 0
   }
+
+function __usage_section__ {
+
+	cat >> ${_newfile} << EOF
+#!/usr/bin/env bash
+
+#-----------------------------------
+# Usage Section
+
+#//Usage: ${_name} [ {-d|--debug} ] [ {-h|--help} | <options>] [<arguments>]
+#//Description: ${_description}
+#//Examples: ${_name} foo; ${_name} --debug bar
+#//Options:
+#//	-d --debug	Enable debug mode
+#//	-h --help	Display this help message
+
+# Created: $(date -Iseconds)
+# Tristan M. Chase <tristan.m.chase@gmail.com>
+
+# Depends on:
+#  list
+#  of
+#  dependencies
+
+EOF
+}

@@ -10,6 +10,7 @@ __magenta_201() 	{ printf "\e["${i}";2;%d;%d;%dm" 0xFF 0x00 0xFF; }
 __orange_208() 		{ printf "\e["${i}";2;%d;%d;%dm" 0xFF 0x66 0x00; }
 __red_196() 		{ printf "\e["${i}";2;%d;%d;%dm" 0xFF 0x00 0x00; }
 
+i=""
 _black="$(__black_16)"
 _blue="$(__blue_39)"
 _celeste="$(__celeste)"

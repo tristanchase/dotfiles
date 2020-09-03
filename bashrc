@@ -186,4 +186,3 @@ stty ixany # Lets any key resume
 
 # Allow bash to expand subdirectories and files using '**'
 shopt -s globstar
-shopt -s nullglob

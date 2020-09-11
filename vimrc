@@ -180,6 +180,7 @@ nnoremap	<Space>hl	:set nohls!<CR>
 
 nnoremap	<Space>j	<PageDown>L
 nnoremap	<Space>k	<PageUp>H
+nnoremap	<Space>k	<C-u>H
 nnoremap	<Space>lb	o<Esc>me:r !date -Iminutes<CR>A <Esc>0D`ePJxI#log_begin <Esc>| " Insert "#log_begin " and the date in ISO 8601 format on a new line below the cursor.
 nnoremap	<Space>le	o<Esc>me:r !date -Iminutes<CR>A <Esc>0D`ePJxI#log_end <Esc>A (0 hrs 00 min)<Esc>3F0| " Insert "#log_end ",  the date in ISO 8601 format, and "(0 hrs 00 min)" on a new line below the cursor and go to the 0 before hrs.
 nnoremap	<Space>li	:set list!<CR>| " Toggle hidden characters
@@ -189,7 +190,8 @@ nnoremap	<Space>ps	k?\zs\\.*section\ze[^ ]<CR>zz| " Find previous section in LaT
 nnoremap	<Space>qq	:q!
 nnoremap	<Space>sa	ggVG| " Select all
 nnoremap	<Space>so	:source $MYVIMRC<CR>
-nnoremap	<Space><Space>	<PageDown>L
+"nnoremap	<Space><Space>	<PageDown>L
+nnoremap	<Space><Space>	<C-d>L
 nnoremap	<Space>sp	:set nospell!<cr>
 nnoremap	<Space>te	:tabe<cr>
 nnoremap	<Space>ti	:r !date +\%R<CR>| " Insert the time in HH:MM format
@@ -235,8 +237,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 call pathogen#infect()
 syntax on
-set background=light " dark | light "
-"set background=dark " dark | light "
+set background=dark " dark | light "
 colorscheme solarized
 "filetype plugin on
 set cursorline

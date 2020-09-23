@@ -202,7 +202,7 @@ nnoremap	<Space>wj	<C-w>j
 nnoremap	<Space>wk	<C-w>k
 nnoremap	<Space>wl	<C-w>l
 nnoremap	<Space>wq	:wq
-nnoremap	<Space>ws	:%s/\s\+$//eg<CR>| " Find and kill trailing whitespace
+nnoremap	<Space>ws	:%s/\s\+$//eg<CR><C-o>| " Find and kill trailing whitespace
 nnoremap	<Space>ww	<C-w>w
 nnoremap	<Space>th		:tab help |
 nnoremap	/		/\v
@@ -237,7 +237,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 call pathogen#infect()
 syntax on
-set background=dark " dark | light "
+set background=light " dark | light "
 colorscheme solarized
 "filetype plugin on
 set cursorline

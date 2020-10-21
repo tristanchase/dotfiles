@@ -71,7 +71,12 @@ function __cleanup__ {
 }
 
 
-function __ctrl_c__ { exit 130 ; }
+function __ctrl_c__ {
+	printf "%b\n"
+	__fatal__ ""$(basename $0).$$": script terminated by user."
+	__cleanup__
+	exit 130
+}
 
 function __debugger__ {
 # Low-tech debug mode
@@ -112,7 +117,7 @@ function __fatal__   { echo "$(date -Iseconds) [FATAL]   $*" | tee -a "${LOG_FIL
 #function __options__
 
 function __traperr__ {
-	 "${FUNCNAME[1]}: ${BASH_COMMAND}: $?: ${BASH_SOURCE[1]}.$$ at line ${BASH_LINENO[0]}"
+	 "${FUNCNAME[1]}:: ${BASH_COMMAND}:: $?:: ${BASH_SOURCE[1]}.$$ at line ${BASH_LINENO[0]}"
 }
 
 

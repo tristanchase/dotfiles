@@ -219,6 +219,23 @@ let g:netrw_keepdir = 0
 let g:netrw_fastbrowse = 0 " Possibly gets rid of [RO] netrw buffers: https://github.com/tpope/vim-vinegar/issues/13: * Monitor 2019-12-05
 " EndNetrw
 "}}}
+" Functions"{{{
+function! ViewHtmlText(url)
+	if !empty(a:url)
+		new
+		setlocal buftype=nofile bufhidden=hide noswapfile
+		execute 'r !elinks ' . a:url . ' -dump -dump-width ' .  winwidth(0)
+		1d
+	endif
+endfunction
+" Save and view text for current html file.
+nnoremap	<Leader>H	:update<Bar>call ViewHtmlText(expand('%:p'))<CR>
+" View text for visually selected url.
+vnoremap	<Leader>h	y:call ViewHtmlText(@@)<CR>
+" View text for URL from clipboard.
+" On Linux, use @* for current selection or @+ for text in clipboard.
+nnoremap	<Leader>h	:call ViewHtmlText(@+)<CR>
+" }}}
 " LaTeX"{{{
 " These may be useful for working with LaTeX.
 "set wrap

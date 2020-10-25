@@ -68,13 +68,15 @@ function __cleanup__ {
 	if [[ -n "${_debug_file:-}" ]]; then
 		echo "Debug file is: "${_debug_file:-}""
 	fi
+
+	__local_cleanup
+
 }
 
 
 function __ctrl_c__ {
 	printf "%b\n"
 	__fatal__ ""$(basename $0).$$": script terminated by user."
-	__cleanup__
 	exit 130
 }
 

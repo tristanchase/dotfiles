@@ -64,7 +64,7 @@ function __cleanup__ {
 			;;
 	esac
 
-	__local_cleanup__
+	#__local_cleanup__
 
 	if [[ -n "${_debug_file:-}" ]]; then
 		echo "Debug file is: "${_debug_file:-}""

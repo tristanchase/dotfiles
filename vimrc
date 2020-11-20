@@ -149,16 +149,17 @@ vnoremap	<leader>(	<esc>`<i(<esc>`>a)<esc>
 vnoremap	<leader>[	<esc>`<i[<esc>`>a]<esc>
 vnoremap	<leader>{	<esc>`<i{<esc>`>a}<esc>
 vnoremap	<leader>*	<esc>`<i*<esc>`>a*<esc>
-inoremap	<leader>fu	function __+__<esc>2hs
-nnoremap	<leader>fu	ifunction __+__<esc>2hs
+inoremap	<leader>fu	function __x__ {<cr>:<cr>}<cr><esc>3kfxs
+nnoremap	<leader>fu	ifunction __x__ {<cr>:<cr>}<cr><esc>3kfxs
+inoremap	<leader>h	"${HOME}"
 "nnoremap	<leader>g	:silent exe "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 nnoremap	<leader>kb	:!grep "^\w*map\!*\s" $MYVIMRC <bar> sort -k2 -k1 > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR>| " Show mappings in this file
 nnoremap	<leader>n	:cnext<cr>
 nnoremap	<leader>p	:cprevious<cr>
 inoremap	<leader>se	#-----------------------------------
 nnoremap	<leader>se	i#-----------------------------------<esc>
-inoremap	<leader>v	"${}"<esc>hi
-inoremap	<leader>x	"$()"<esc>hi
+inoremap	<leader>v	"${_}"<esc>hi
+inoremap	<leader>x	"$(_)"<esc>hi
 nnoremap	<leader>ws	:highlight TrailWS ctermbg=5<CR> :match TrailWS /\v\s+$/<CR>
 nnoremap	<localleader>ws :match<CR>
 nnoremap	n		nzz

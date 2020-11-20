@@ -146,10 +146,10 @@ fi
 
 # some more ls aliases
 alias lf='ls -Fa'
-alias ll='ls --color=always -alF | less -R'
-alias la='ls --color=always -A | less -R'
-alias l='ls --color=always -CF | less -R'
-alias lh='ls --color=always -lasth | less -R'
+alias ll='ls --color=always -alF | less -RF'
+alias la='ls --color=always -A | less -RF'
+alias l='ls --color=always -CF | less -RF'
+alias lh='ls --color=always -lasth | less -RF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

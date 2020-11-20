@@ -52,6 +52,9 @@ alias gst='git status && wsp' # wsp is in ~/bin
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit -v'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gdelb='git branch -d'
 alias gp='git push'
 
 # Edit and source ~/.bashrc

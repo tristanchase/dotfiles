@@ -102,6 +102,13 @@ function __find_trailing_whitespace__ {
 	fi
 }
 
+function __globstar__ {
+	# Only set this if your $SHELL is bash
+	if [[ $SHELL =~ (bash) ]]; then
+		shopt -s globstar
+	fi
+}
+
 function __it_works__ {
 	printf ""${orange_bold}"%s\n"${reset_colors}"" "It works!"
 }

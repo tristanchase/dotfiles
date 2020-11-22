@@ -117,10 +117,10 @@ function __logger__ {
 	readonly LOG_FILE=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}").log"
 	mkdir -p $(dirname ${LOG_FILE})
 }
-function __info__    { echo "$(date -Iseconds) [INFO]    $*" | tee -a "${LOG_FILE}" >&2 ; }
-function __warning__ { echo "$(date -Iseconds) [WARNING] $*" | tee -a "${LOG_FILE}" >&2 ; }
-function __error__   { echo "$(date -Iseconds) [ERROR]   $*" | tee -a "${LOG_FILE}" >&2 ; }
-function __fatal__   { echo "$(date -Iseconds) [FATAL]   $*" | tee -a "${LOG_FILE}" >&2 ; }
+function __info__    { __logger__; echo "$(date -Iseconds) [INFO]    $*" | tee -a "${LOG_FILE}" >&2 ; }
+function __warning__ { __logger__; echo "$(date -Iseconds) [WARNING] $*" | tee -a "${LOG_FILE}" >&2 ; }
+function __error__   { __logger__; echo "$(date -Iseconds) [ERROR]   $*" | tee -a "${LOG_FILE}" >&2 ; }
+function __fatal__   { __logger__; echo "$(date -Iseconds) [FATAL]   $*" | tee -a "${LOG_FILE}" >&2 ; }
 
 #function __options__
 

@@ -29,6 +29,14 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+# Functions
+
+if [[ -e ~/.functions.sh ]]; then
+	source ~/.functions.sh
+fi
+
+# EndFunctions
+
 # Colors
 
 if [[ -e ~/.colors.sh ]]; then
@@ -107,7 +115,8 @@ ANCHOR=$(echo -e "\xE2\x9A\x93")
 
 # Prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}'$COLOR_BOLD_MAGENTA'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$COLOR_BOLD_GREEN'\u@\h'$COLOR_DEFAULT':'$COLOR_BOLD_BLUE'\w'$COLOR_BOLD_CYAN'$(__git_ps1 " (%s)")'$COLOR_DEFAULT'\n'$COLOR_DEFAULT'\$ '
+	#PS1='${debian_chroot:+($debian_chroot)}'$COLOR_BOLD_MAGENTA'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$COLOR_BOLD_GREEN'\u@\h'$COLOR_DEFAULT':'$COLOR_BOLD_BLUE'\w'$COLOR_BOLD_CYAN'$(__git_ps1 " (%s)")'$COLOR_DEFAULT'\n'$COLOR_DEFAULT'\$ '
+	PS1='${debian_chroot:+($debian_chroot)}'"${bold_magenta}"'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'"${bold_green}"'\u@\h'"${reset_colors}"':'"${bold_blue}"'\w''$(__git_prompt__)'"${reset_colors}"'\n'"${reset_colors}"'\$ '
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 fi
@@ -123,14 +132,6 @@ xterm*|rxvt*)
 esac
 # EndPrompt
 
-# Functions
-
-if [[ -e ~/.functions.sh ]]; then
-	source ~/.functions.sh
-fi
-
-# EndFunctions
-
 # Alias
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -139,12 +140,9 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
-    alias grep='grep --color=always'
-    alias fgrep='fgrep --color=always'
-    alias egrep='egrep --color=always'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases

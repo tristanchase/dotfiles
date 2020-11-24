@@ -16,9 +16,13 @@
 
 #-----------------------------------
 
-# Source colors
+# Source helper files
 if [[ -e ~/.colors.sh ]]; then
 	source ~/.colors.sh
+fi
+
+if [[ -e ~/.git-prompt.sh ]]; then
+	source ~/.git-prompt.sh
 fi
 
 function __be_root__ {
@@ -100,6 +104,21 @@ function __find_trailing_whitespace__ {
 		printf "%b\n" "${_whitespace[@]}" | xargs realpath
 		printf ""${reset:-}"%b\n"
 	fi
+}
+function __git_ps1__ {
+	source ~/.git-prompt.sh
+	__git_ps1 2>/dev/null
+}
+
+
+function __git_prompt__ {
+	if [[ "$(printf "%b\n" "$(__git_ps1__)" | grep '[\*\+%<>\$]')" ]]; then
+		_git_prompt_color="${bold_orange}"
+	else
+		_git_prompt_color="${BCYN}"
+	fi
+
+	printf ""${_git_prompt_color:-}"%s"${reset:-}"" "$(__git_ps1__)"
 }
 
 function __globstar__ {

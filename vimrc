@@ -214,6 +214,7 @@ nnoremap	#		#zz
 "}}}
 " Abbreviations"{{{
 :ab	echo	printf "%b\n"
+:ab	shebang	#! /bin/bash
 " EndAbbreviations
 "}}}
 " Netrw"{{{

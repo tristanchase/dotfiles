@@ -142,20 +142,26 @@ function __usage_section__ {
 #-----------------------------------
 # Usage Section
 
+#<usage>
 #//Usage: ${_name} [ {-d|--debug} ] [ {-h|--help} | <options>] [<arguments>]
 #//Description: ${_description}
 #//Examples: ${_name} foo; ${_name} --debug bar
 #//Options:
 #//	-d --debug	Enable debug mode
 #//	-h --help	Display this help message
+#</usage>
 
+#<created>
 # Created: $(date -Iseconds)
 # Tristan M. Chase <tristan.m.chase@gmail.com>
+#</created>
 
+#<depends>
 # Depends on:
 #  list
 #  of
 #  dependencies
+#</depends>
 
 EOF
 }

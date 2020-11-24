@@ -141,7 +141,7 @@ inoremap	<leader>{	{}<esc>i
 inoremap	<leader>*	**<esc>i
 vnoremap	<leader>``	<esc>`<i``<esc>`>a''<esc>
 vnoremap	<leader>`	<esc>`<i`<esc>`>a'<esc>
-vnoremap	<leader><	<esc>`<i<<esc>`>a><esc>
+vnoremap	<leader><	<esc>`<i<<esc>`>a><esc>xp
 vnoremap	<leader>'	<esc>`<i'<esc>`>a'<esc>
 vnoremap	<leader>"	iW<esc>`<i"<esc>`>a"<esc>xp
 "vnoremap	<leader>"	<esc>`<i"<esc>`>a"<esc>

@@ -1,0 +1,4 @@
+# Rebuilds your filesystem cache in the background on reboot. Good for speeding up things like find.
+# Lifted from https://unix.stackexchange.com/questions/78726/find-ls-caching
+# Copy to /etc/cron.d and chown to root
+@reboot root /usr/bin/nice -n 19 /usr/bin/ionice -c 3 -t /usr/bin/find / >/dev/null 2>&1

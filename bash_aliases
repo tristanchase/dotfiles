@@ -29,6 +29,9 @@ alias ra='ranger'
 alias please='sudo $(fc -ln -1)'
 alias fuck='sudo $(fc -ln -1)'
 
+# Append less to last command
+alias p='$(fc -ln -1) | less -F'
+
 ## Solve conflict between zsh changing to ~/gtd and running ~/bin/gtd
 #alias gtd='~/bin/gtd'
 

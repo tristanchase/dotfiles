@@ -105,11 +105,11 @@ function __find_trailing_whitespace__ {
 		printf ""${reset:-}"%b\n"
 	fi
 }
+
 function __git_ps1__ {
 	source ~/.git-prompt.sh
 	__git_ps1 2>/dev/null
 }
-
 
 function __git_prompt__ {
 	if [[ "$(printf "%b\n" "$(__git_ps1__)" | grep '[\*\+%<>\$]')" ]]; then
@@ -146,7 +146,6 @@ function __fatal__   { __logger__; echo "$(date -Iseconds) [FATAL]   $*" | tee -
 function __traperr__ {
 	 "${FUNCNAME[1]}:: ${BASH_COMMAND}:: $?:: ${BASH_SOURCE[1]}.$$ at line ${BASH_LINENO[0]}"
 }
-
 
 function __usage__ {
 	# Low-tech help option. Begin any lines you want to include with "#//".

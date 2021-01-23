@@ -113,10 +113,22 @@ fi
 #TOPLVL=
 ANCHOR=$(echo -e "\xE2\x9A\x93")
 
+# Add ↻ to prompt if system needs to restart
+function __reboot_required__ {
+	if [[ -f /var/run/reboot-required ]]; then
+		echo "MYVAR=$(echo -e "\xe2\x86\xbb")" > "${HOME}"/.reboot-required.sh
+	else
+		echo "MYVAR=$(echo "")" > "${HOME}"/.reboot-required.sh
+	fi
+	source "${HOME}"/.reboot-required.sh
+	echo $MYVAR
+}
+
 # Prompt
 if [ "$color_prompt" = yes ]; then
+	PS1='${debian_chroot:+($debian_chroot)}'$bold_red'$(__reboot_required__)'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}'$COLOR_BOLD_MAGENTA'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$COLOR_BOLD_GREEN'\u@\h'$COLOR_DEFAULT':'$COLOR_BOLD_BLUE'\w'$COLOR_BOLD_CYAN'$(__git_ps1 " (%s)")'$COLOR_DEFAULT'\n'$COLOR_DEFAULT'\$ '
-	PS1='${debian_chroot:+($debian_chroot)}'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
+	#PS1='${debian_chroot:+($debian_chroot)}'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
 fi

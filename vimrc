@@ -9,6 +9,7 @@ set encoding=utf-8
 set history=50
 set incsearch
 set ignorecase smartcase
+set isfname+={,}
 set listchars=space:·,tab:<>,nbsp:‗,eol:$,trail:§
 set nocompatible
 set number
@@ -151,7 +152,7 @@ vnoremap	<leader>{	<esc>`<i{<esc>`>a}<esc>
 vnoremap	<leader>*	<esc>`<i*<esc>`>a*<esc>
 inoremap	<leader>fu	function __x__ {<cr>:<cr>}<cr><esc>3kfxs
 nnoremap	<leader>fu	ifunction __x__ {<cr>:<cr>}<cr><esc>3kfxs
-inoremap	<leader>h	"${HOME}"
+inoremap	<leader>h	${HOME}
 "nnoremap	<leader>g	:silent exe "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 nnoremap	<leader>kb	:!grep "^\w*map\!*\s" $MYVIMRC <bar> sort -k2 -k1 > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR>| " Show mappings in this file
 nnoremap	<leader>n	:cnext<cr>

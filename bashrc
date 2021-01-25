@@ -115,7 +115,7 @@ ANCHOR=$(echo -e "\xE2\x9A\x93")
 
 # Add ↻ to prompt if system needs to restart
 function __reboot_required__ {
-	_reboot_req_file=""${HOME}"/.reboot-required.sh"
+	_reboot_req_file="${HOME}/.reboot-required.sh"
 	if [[ -f /var/run/reboot-required ]]; then
 		echo -e "\xe2\x86\xbb" > "${_reboot_req_file}"
 	else

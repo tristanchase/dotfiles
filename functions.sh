@@ -87,7 +87,7 @@ function __debugger__ {
 # Low-tech debug mode
 	set -o verbose
 	set -o xtrace
-	_debug_file=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}")-$(date -Iseconds).debug.$$"
+	_debug_file="${HOME}/script-logs/$(basename "${0}")/$(basename "${0}")-$(date -Iseconds).debug.$$"
 	mkdir -p $(dirname ${_debug_file})
         touch ${_debug_file}
 	exec > >(tee "${_debug_file:-}") 2>&1
@@ -133,7 +133,7 @@ function __it_works__ {
 }
 
 function __logger__ {
-	readonly LOG_FILE=""${HOME}"/script-logs/$(basename "${0}")/$(basename "${0}").log"
+	readonly LOG_FILE="${HOME}/script-logs/$(basename "${0}")/$(basename "${0}").log"
 	mkdir -p $(dirname ${LOG_FILE})
 }
 function __info__    { __logger__; echo "$(date -Iseconds) [INFO]    $*" | tee -a "${LOG_FILE}" >&2 ; }

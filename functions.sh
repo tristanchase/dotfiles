@@ -32,6 +32,10 @@ function __be_root__ {
 
 #function __check_dependencies__
 
+function __chooser__ {
+	:
+}
+
 function __cleanup__ {
 	if [[ -n "${_tempfiles:-}" ]]; then
 		rm "$(printf "%b\n" "${_tempfiles:-}")"

@@ -168,6 +168,8 @@ nnoremap	N		Nzz
 vnoremap	.		:norm.<CR>
 nnoremap	Q		:q!
 nnoremap	<Return>	:winc gF<CR>| " Open the file (on line number) in new tab
+inoremap	<Space>ad	<Esc>:w<CR>:!asciidoctor %<CR>
+nnoremap	<Space>ad	:w<CR>:!asciidoctor %<CR>
 nnoremap	<Space>bb	:tabe $HOME/.bashrc<CR>
 nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx| " Mark a gtd task complete
 nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR>| " Insert the date in YYYY-MM-DD Day format and insert two lines

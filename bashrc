@@ -115,7 +115,7 @@ ANCHOR=$(echo -e "\xE2\x9A\x93")
 
 # Add ↻ to prompt if system needs to restart
 function __reboot_required__ {
-	_reboot_req_file="${HOME}/.reboot-required.sh"
+	_reboot_req_file="${HOME}/.reboot-required.icon"
 	if [[ -f /var/run/reboot-required ]]; then
 		echo -e "\xe2\x86\xbb" > "${_reboot_req_file}"
 	else
@@ -199,3 +199,11 @@ stty ixany # Lets any key resume
 
 # Allow bash to expand subdirectories and files using '**'
 shopt -s globstar
+
+# ssh-agent stuff
+_keys="bs_key thinkpad-t410 id_ed25519"
+for _key in $_keys; do
+	if [[ -f ~/.ssh/$_key ]]; then
+		eval $(keychain --eval $_key)
+	fi
+done

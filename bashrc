@@ -201,8 +201,9 @@ stty ixany # Lets any key resume
 shopt -s globstar
 
 # ssh-agent stuff
-_keys="bs_key thinkpad-t410 id_ed25519"
-for _key in $_keys; do
+# Dynamically find known keys in ~/.ssh and activate them
+_keylist=( "$(printf "%b\n" ~/.ssh/* | grep -Ev 'pub|config|known_hosts' | xargs basename -a)" )
+for _key in $_keylist; do
 	if [[ -f ~/.ssh/$_key ]]; then
 		eval $(keychain --eval $_key)
 	fi

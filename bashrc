@@ -201,8 +201,8 @@ stty ixany # Lets any key resume
 shopt -s globstar
 
 # ssh-agent stuff
-# Dynamically find known keys in ~/.ssh and activate them
-_keylist=( "$(printf "%b\n" ~/.ssh/* | grep -Ev 'pub|config|known_hosts' | xargs basename -a)" )
+# Dynamically find known keys in ~/.ssh and activate them (exclude pub|config|known_hosts|authorized_key)
+_keylist=( "$(printf "%b\n" ~/.ssh/* | grep -Ev 'pub|config|known_hosts|authorized_key' | xargs basename -a)" )
 for _key in $_keylist; do
 	if [[ -f ~/.ssh/$_key ]]; then
 		eval $(keychain --eval $_key)

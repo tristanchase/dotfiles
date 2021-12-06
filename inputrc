@@ -1,5 +1,3 @@
 set show-mode-in-prompt on
-#set vi-ins-mode-string "\033[1;32m[INS]" # bold green
-#set vi-cmd-mode-string "\033[1;31m[CMD]" # bold red
-set vi-ins-mode-string "\033[1;38;2;204;204;0m[INS]" # bold yellow3
-set vi-cmd-mode-string "\033[1;31m[CMD]" # bold red
+set vi-ins-mode-string "\033[1;38;2;204;204;0m[INS]" # bold yellow 184
+set vi-cmd-mode-string "\033[1;38;2;255;0;0m[CMD]" # bold red 196

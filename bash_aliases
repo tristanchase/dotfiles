@@ -8,7 +8,7 @@ alias anchor='export TOPLVL=$SHLVL; PS1=$ANCHOR"$PS1"'
 
 # Make alias output a little more readable
 alias aka='alias | less -M'
-alias graka='grep -n "^#*alias" ~/dotfiles/* | vim -'
+alias graka='grep -rn "^#*alias" ~/dotfiles/* | vim -'
 
 # List the files in the current directory with filetype and source of symlinks
 alias ft='ftx .* * | more' #ftx is a script in ~/bin

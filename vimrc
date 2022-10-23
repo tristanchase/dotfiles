@@ -263,15 +263,16 @@ set t_Co=256
 let g:solarized_termcolors=256
 call pathogen#infect()
 syntax on
-set background=light " dark | light "
+set background=dark " dark | light "
 colorscheme solarized
-"filetype plugin on
-set cursorline
-set cursorcolumn
+filetype plugin on
+"set cursorline
+"set cursorcolumn
 set colorcolumn=80
-call togglebg#map("<F5>")
-" EndSolarized
-"}}}
+"call togglebg#map("<F5>")
+"" EndSolarized
+""}}}
+"
 " TODO Clean up this file!
 "
 " vim: set fdm=marker:

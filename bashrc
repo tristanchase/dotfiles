@@ -126,7 +126,7 @@ function __reboot_required__ {
 
 # Prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='${debian_chroot:+($debian_chroot)}'$bold_red'$(__reboot_required__)'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
+	PS1='$?:${debian_chroot:+($debian_chroot)}'$bold_red'$(__reboot_required__)'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}'$COLOR_BOLD_MAGENTA'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$COLOR_BOLD_GREEN'\u@\h'$COLOR_DEFAULT':'$COLOR_BOLD_BLUE'\w'$COLOR_BOLD_CYAN'$(__git_ps1 " (%s)")'$COLOR_DEFAULT'\n'$COLOR_DEFAULT'\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 else

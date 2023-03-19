@@ -18,6 +18,7 @@ set ruler
 set showcmd
 set splitbelow
 set splitright
+set tags=~/tags
 set wildmenu
 "set spell spelllang=en_us
 " EndSet

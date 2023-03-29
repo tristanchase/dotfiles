@@ -1,0 +1,4 @@
+#! /bin/bash
+
+ssh tristanc@thinkpad-t410
+#ssh tristanc@192.168.1.5

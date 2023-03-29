@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ssh tristanc@linode-server
+#ssh tristanc@170.187.163.179

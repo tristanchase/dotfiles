@@ -199,6 +199,7 @@ nnoremap	<Space>so	:source $MYVIMRC<CR>
 nnoremap	<Space><Space>	<C-d>L
 nnoremap	<Space>sp	:set nospell!<cr>
 nnoremap	<Space>te	:tabe<cr>
+nnoremap	<Space>tf	:tabfind ./.**/
 nnoremap	<Space>ti	:r !date +\%R<CR>| " Insert the time in HH:MM format
 nnoremap	<Space>vv	:tabe $MYVIMRC<CR>
 nnoremap	<Space>wc	:winc | " Can't always use CTRL-W (esp. when working from Chromebook)

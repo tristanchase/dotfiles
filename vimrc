@@ -218,8 +218,8 @@ nnoremap	#		#zz
 " EndMyMappings
 "}}}
 " Abbreviations"{{{
-:ab	echo	printf "%b\n"
-:ab	shebang	#! /bin/bash
+":ab	echo	printf "%b\n"
+":ab	shebang	#! /bin/bash
 " EndAbbreviations
 "}}}
 " Netrw"{{{

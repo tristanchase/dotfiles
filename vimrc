@@ -129,7 +129,7 @@ nnoremap	g*		g*zz
 nnoremap	g#		g#zz
 nnoremap	H		0
 nnoremap	j		jzz
-inoremap	jk		<ESC>
+"inoremap	jk		<ESC>
 nnoremap	k		kzz
 nnoremap	L		$
 inoremap	<leader>``	``''<esc>hi

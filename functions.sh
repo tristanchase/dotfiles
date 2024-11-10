@@ -49,7 +49,7 @@ function __cleanup__ {
 			#do nothing
 			;;
 		2) # exit 2; Missing keyword or command, or permission problem
-			__fatal__ "$(basename "${0}"): missing keyword or command, or permission problem."
+			#__fatal__ "$(basename "${0}"): missing keyword or command, or permission problem."
 			;;
 		126) # exit 126; Cannot execute command (permission denied or not executable)
 			#do nothing
@@ -61,7 +61,7 @@ function __cleanup__ {
 			#do nothing
 			;;
 		130) # exit 130; user termination
-			__fatal__ ""$(basename $0).$$": script terminated by user."
+			#__fatal__ ""$(basename $0).$$": script terminated by user."
 			;;
 		255) # exit 255; Exit status out of range (e.g. exit -1)
 			#do nothing
@@ -153,7 +153,7 @@ function __traperr__ {
 
 function __usage__ {
 	# Low-tech help option. Begin any lines you want to include with "#//".
-	grep '^#//' "${0}" | cut -c4- ; exit 0
+	grep '^#//' "${0}" | cut -c4- ; exit 2
   }
 
 function __usage_section__ {

@@ -1,0 +1,14 @@
+#/bin/bash
+
+# update.sh
+# 2023-12-31
+
+printf "%b\n" "coapt:"
+coapt
+
+printf "%b\n" "show-gits:"
+show-gits --upgrade
+
+printf "%b\n"
+printf "%b\n" "binstall:"
+binstall --update

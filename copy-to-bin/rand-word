@@ -11,4 +11,4 @@ awk -v word_length="${1:-}" 'length ($0) == word_length' "${_word_file}" | less 
 # 	Pick a random word
 # 	Pick a random word of length $word_length
 # 	Generate a list of words of length $word_length
-#
+#	Generate a list of length $list_length

@@ -147,6 +147,34 @@ function __fatal__   { __logger__; echo "$(date -Iseconds) [FATAL]   $*" | tee -
 
 #function __options__
 
+function __reboot_option__ {
+	if [[ -f /var/run/reboot-required ]]; then
+		cat /var/run/reboot-required
+		printf "%b" "Would you like to reboot the system now? (y/N): "
+		read _response
+
+		case ${_response:-} in
+			y|Y)
+				_seconds="5"
+				while [ "${_seconds:-}" -gt -1 ]; do
+					printf "%b" "Rebooting in "${_seconds:-}" seconds...\033[0K\r"
+					sleep 1
+					: $((_seconds--))
+				done
+				printf "%b\n"
+				printf "%b\n" "Reboot!"
+				sudo reboot
+				;;
+
+			*)
+				__info__ ""$(basename ${0}).$$": reboot deferred by user."
+				exit 3 #reboot deferred
+				;;
+		esac
+
+	fi
+}
+
 function __traperr__ {
 	 "${FUNCNAME[1]}:: ${BASH_COMMAND}:: $?:: ${BASH_SOURCE[1]}.$$ at line ${BASH_LINENO[0]}"
 }

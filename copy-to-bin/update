@@ -2,9 +2,10 @@
 
 # update.sh
 # 2023-12-31
+source ~/.functions.sh
 
 printf "%b\n" "coapt:"
-coapt
+coapt --no-reboot
 
 printf "%b\n" "show-gits:"
 show-gits --upgrade
@@ -12,3 +13,6 @@ show-gits --upgrade
 printf "%b\n"
 printf "%b\n" "binstall:"
 binstall --update
+printf "%b\n"
+
+__reboot_option__

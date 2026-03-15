@@ -209,3 +209,7 @@ for _key in $_keylist; do
 		eval $(keychain --eval $_key)
 	fi
 done
+
+# Set default pager to less with desired options
+export PAGER="less -FXR"
+

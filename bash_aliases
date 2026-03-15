@@ -7,17 +7,17 @@ alias go='. ~/bin/jack-jack'
 alias anchor='export TOPLVL=$SHLVL; PS1=$ANCHOR"$PS1"'
 
 # Make alias output a little more readable
-alias aka='alias | less -M'
+alias aka='alias | less -FXRM'
 alias graka='grep -rn "^#*alias" ~/dotfiles/* | vim -'
 
 # List the files in the current directory with filetype and source of symlinks
 alias ft='ftx .* * | more' #ftx is a script in ~/bin
 
 # Make env output a little more readable
-alias env='env | sort | less -M'
+alias env='env | sort | less -FXRM'
 
 # Make path easier to visualize
-alias path='echo PATH=$PATH | more'
+alias path='echo PATH=$PATH | less -FXRM'
 
 # Stupid command line tricks
 alias :q='exit'
@@ -30,7 +30,7 @@ alias please='sudo $(fc -ln -1)'
 alias fuck='sudo $(fc -ln -1)'
 
 # Append less to last command
-alias p='$(fc -ln -1) | less -F'
+alias p='$(fc -ln -1) | less -FXRM'
 
 ## Solve conflict between zsh changing to ~/gtd and running ~/bin/gtd
 #alias gtd='~/bin/gtd'

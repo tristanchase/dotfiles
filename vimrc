@@ -2,7 +2,7 @@ scriptencoding utf-8
 execute pathogen#infect()
 " Set statements"{{{
 set backspace=indent,eol,start
-set backup
+"set backup |" Delete old backup, backup current file (keeps backup~)
 set backupdir=~/.vim/tmp//,.
 set directory=~/.vim/tmp//,.
 set encoding=utf-8
@@ -20,6 +20,7 @@ set splitbelow
 set splitright
 set tags=~/tags
 set wildmenu
+set writebackup |" Backup current file, deleted afterwards (default)
 "set spell spelllang=en_us
 " EndSet
 "}}}
@@ -218,7 +219,7 @@ nnoremap	#		#zz
 " EndMyMappings
 "}}}
 " Abbreviations"{{{
-":ab	echo	printf "%b\n"
+:ia	pfbn	printf "%b\n"
 ":ab	shebang	#! /bin/bash
 " EndAbbreviations
 "}}}

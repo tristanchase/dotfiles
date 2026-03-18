@@ -1,5 +1,8 @@
 ## alias stuff
 
+# Always have more exit-at-eof
+alias more='more -e'
+
 # Source jack-jack to teleport between directories in $HOME: go <dir>
 alias go='. ~/bin/jack-jack'
 

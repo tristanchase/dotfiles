@@ -212,4 +212,3 @@ done
 
 # Set default pager to less with desired options
 export PAGER="less -FXR"
-

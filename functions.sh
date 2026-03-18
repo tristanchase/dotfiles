@@ -147,6 +147,11 @@ function __fatal__   { __logger__; echo "$(date -Iseconds) [FATAL]   $*" | tee -
 
 #function __options__
 
+function __pager__ {
+  ${PAGER:-more -e}
+}
+
+
 function __reboot_option__ {
 	if [[ -f /var/run/reboot-required ]]; then
 		cat /var/run/reboot-required

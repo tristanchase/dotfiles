@@ -173,7 +173,7 @@ vnoremap	.		:norm.<CR>
 nnoremap	Q		:q!
 nnoremap	<Return>	:winc gF<CR>| " Open the file (on line number) in new tab
 nnoremap	<Space>bb	:tabe $HOME/.bashrc<CR>
-nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJx| " Mark a gtd task complete
+nnoremap	<Space>co	I <Esc>0f*Xciw+ <Esc>md:r !date +\%F<CR>0D`dpJ| " Mark a gtd task complete
 nnoremap	<Space>da	:r !date +\%F" "\%a<CR>o<CR>| " Insert the date in YYYY-MM-DD Day format and insert two lines
 "nnoremap	<Space>di	me:r !date +\%F<CR>A <Esc>0D`ePJx| " Insert the date in YYYY-MM-DD format inline just before cursor position
 nnoremap	<Space>di	me:r !date -Iseconds<CR>A <Esc>0D`epJx| " Insert the date inline just after cursor position

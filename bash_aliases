@@ -2,6 +2,7 @@
 
 # Always have more exit-at-eof
 alias more='more -e'
+alias less='less -FXRM'
 
 # Source jack-jack to teleport between directories in $HOME: go <dir>
 alias go='. ~/bin/jack-jack'

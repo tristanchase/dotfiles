@@ -119,7 +119,7 @@ function __git_prompt__ {
 	if [[ "$(printf "%b\n" "$(__git_ps1__)" | grep '[\*\+%<>\$]')" ]]; then
 		_git_prompt_color="${bold_orange}"
 	else
-		_git_prompt_color="${BCYN}"
+		_git_prompt_color="${bold_cyan}"
 	fi
 
 	printf ""${_git_prompt_color:-}"%s"${reset:-}"" "$(__git_ps1__)"
@@ -133,7 +133,7 @@ function __globstar__ {
 }
 
 function __it_works__ {
-	printf ""${orange_bold}"%s\n"${reset_colors}"" "It works!"
+	printf ""${bold_orange}"%s\n"${reset_colors}"" "It works!"
 }
 
 function __logger__ {

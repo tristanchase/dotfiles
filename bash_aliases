@@ -7,9 +7,6 @@ alias less='less -FXRM'
 # Source jack-jack to teleport between directories in $HOME: go <dir>
 alias go='. ~/bin/jack-jack'
 
-# Anchor your top-level shell
-alias anchor='export TOPLVL=$SHLVL; PS1=$ANCHOR"$PS1"'
-
 # Make alias output a little more readable
 alias aka='alias | less -FXRM'
 alias graka='grep -rn "^#*alias" ~/dotfiles/* | vim -'

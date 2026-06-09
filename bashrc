@@ -109,11 +109,7 @@ if [[ -e ~/.git-prompt.sh ]]; then
 	export GIT_PS1_SHOWCOLORHINTS=true
 fi
 
-# $SHLVL prompt tricks
-#TOPLVL=
-ANCHOR=$(echo -e "\xE2\x9A\x93")
-
-# Add ↻ to prompt if system needs to restart
+# Add reminder to prompt if system needs to restart
 function __reboot_required__ {
 	_reboot_req_file="${HOME}/.reboot-required.icon"
 	if [[ -f /var/run/reboot-required ]]; then

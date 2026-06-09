@@ -9,6 +9,7 @@ __light_green_49() 	{ printf "\e["${i}";2;%d;%d;%dm" 0x00 0xFF 0x99; }
 __magenta_201() 	{ printf "\e["${i}";2;%d;%d;%dm" 0xFF 0x00 0xFF; }
 __orange_208() 		{ printf "\e["${i}";2;%d;%d;%dm" 0xFF 0x66 0x00; }
 __red_196() 		{ printf "\e["${i}";2;%d;%d;%dm" 0xFF 0x00 0x00; }
+__white_231() 		{ printf "\e["${i}";2;%d;%d;%dm" 0xFF 0xFF 0xFF; }
 
 i=""
 _black="$(__black_16)"
@@ -20,6 +21,7 @@ _light_green="$(__light_green_49)"
 _magenta="$(__magenta_201)"
 _orange="$(__orange_208)"
 _red="$(__red_196)"
+_white="$(__white_231)"
 
 #Regular text
 BLK="\e[0;30m"
@@ -40,6 +42,7 @@ fg_light_green="$(__light_green_49)"
 fg_magenta="$(__magenta_201)"
 fg_orange="$(__orange_208)"
 fg_red="$(__red_196)"
+fg_white="$(__white_231)"
 light_green_fg="${fg_light_green}" # Leave these in place for legacy reasons
 celeste_fg="${fg_celeste}"
 orange_fg="${fg_orange}"
@@ -64,6 +67,7 @@ bold_light_green="$(__light_green_49)"
 bold_magenta="$(__magenta_201)"
 bold_orange="$(__orange_208)"
 bold_red="$(__red_196)"
+bold_white="$(__white_231)"
 light_green_bold="${bold_light_green}"
 celeste_bold="${bold_celeste}"
 orange_bold="${bold_orange}"
@@ -88,6 +92,7 @@ ul_light_green="$(__light_green_49)"
 ul_magenta="$(__magenta_201)"
 ul_orange="$(__orange_208)"
 ul_red="$(__red_196)"
+ul_white="$(__white_231)"
 light_green_ul="${ul_light_green}"
 celeste_ul="${ul_celeste}"
 orange_ul="${ul_orange}"
@@ -112,6 +117,7 @@ bg_light_green="$(__light_green_49)"
 bg_magenta="$(__magenta_201)"
 bg_orange="$(__orange_208)"
 bg_red="$(__red_196)"
+bg_white="$(__white_231)"
 light_green_bg="${bg_light_green}"
 celeste_bg="${bg_celeste}"
 orange_bg="${bg_orange}"

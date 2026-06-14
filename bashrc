@@ -111,19 +111,27 @@ fi
 
 # Add reminder to prompt if system needs to restart
 function __reboot_required__ {
-	_reboot_req_file="${HOME}/.reboot-required.icon"
+	_reboot_req_file="${HOME}/.cache/reboot-required.icon"
 	if [[ -f /var/run/reboot-required ]]; then
 		echo -e "[reboot]" > "${_reboot_req_file}"
-		#echo -e "\xe2\x86\xbb" > "${_reboot_req_file}"
 	else
 		echo "" > "${_reboot_req_file}"
 	fi
 	cat "${_reboot_req_file}"
 }
 
+# Add reminder if there are updates available
+function __updates_available__ {
+	_updates_available_file="${HOME}/.cache/updates-available.icon"
+	if [[ -f "${_updates_available_file}" ]]; then
+		cat "${_updates_available_file}"
+	fi
+}
+
+
 # Prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='$?:${debian_chroot:+($debian_chroot)}'$bold_red'$(__reboot_required__)'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
+	PS1='$?:${debian_chroot:+($debian_chroot)}'$bold_red'$(__reboot_required__)'$bold_white'$(__updates_available__)'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}'$COLOR_BOLD_MAGENTA'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$COLOR_BOLD_GREEN'\u@\h'$COLOR_DEFAULT':'$COLOR_BOLD_BLUE'\w'$COLOR_BOLD_CYAN'$(__git_ps1 " (%s)")'$COLOR_DEFAULT'\n'$COLOR_DEFAULT'\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 else

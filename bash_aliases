@@ -24,6 +24,7 @@ alias path='echo PATH=$PATH | less -FXRM'
 alias :q='exit'
 alias x='exit'
 alias Q='exit'
+alias q='exit'
 alias ra='ranger'
 
 # Prepend sudo to last command

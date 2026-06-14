@@ -111,14 +111,9 @@ fi
 
 # Add reminder to prompt if system needs to restart
 function __reboot_required__ {
-	#_reboot_req_file="${HOME}/.cache/reboot-required.icon"
 	if [[ -f /var/run/reboot-required ]]; then
 		printf "[reboot]"
-		#echo -e "[reboot]" > "${_reboot_req_file}"
-	#else
-		#echo "" > "${_reboot_req_file}"
 	fi
-	#cat "${_reboot_req_file}"
 }
 
 # Add reminder if there are updates available

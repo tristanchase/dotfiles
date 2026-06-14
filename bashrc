@@ -217,3 +217,8 @@ done
 
 # Set default pager to less with desired options
 export PAGER="less -FXR"
+
+# Run update-notifier on login
+if [[ -f ${HOME}/bin/update-notifier.sh ]]; then
+	${HOME}/bin/update-notifier.sh
+fi

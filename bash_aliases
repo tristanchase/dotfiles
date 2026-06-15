@@ -70,8 +70,7 @@ alias bb='vim ~/.bashrc'
 alias so='source ~/.bashrc'
 
 # Get last exit code
-#alias err="echo $?"
-alias err='printf "$_ $?\n"'
+alias err='echo $_:$?'
 
 # Check files for trailing whitespace
 alias ws='grep --binary-files=without-match '\''\s$'\'' * '

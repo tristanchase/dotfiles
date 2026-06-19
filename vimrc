@@ -146,8 +146,8 @@ vnoremap	<leader>``	<esc>`<i``<esc>`>a''<esc>
 vnoremap	<leader>`	<esc>`<i`<esc>`>a'<esc>
 vnoremap	<leader><	<esc>`<i<<esc>`>a><esc>xp
 vnoremap	<leader>'	<esc>`<i'<esc>`>a'<esc>
-vnoremap	<leader>"	iW<esc>`<i"<esc>`>a"<esc>xp
-"vnoremap	<leader>"	<esc>`<i"<esc>`>a"<esc>
+nnoremap	<leader>q	i"<esc>Ea"<esc>
+vnoremap	<leader>q	iW<esc>`<i"<esc>`>a"<esc>xp
 vnoremap	<leader>(	<esc>`<i(<esc>`>a)<esc>
 vnoremap	<leader>[	<esc>`<i[<esc>`>a]<esc>
 vnoremap	<leader>{	<esc>`<i{<esc>`>a}<esc>

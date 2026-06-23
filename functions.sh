@@ -129,6 +129,7 @@ function __globstar__ {
 	# Only set this if your $SHELL is bash
 	if [[ $SHELL =~ (bash) ]]; then
 		shopt -s globstar
+		shopt -s extglob
 	fi
 }
 

@@ -199,9 +199,12 @@ function __usage_section__ {
 # Usage Section
 
 #<usage>
-#//Usage: ${_name} [ {-d|--debug} ] [ {-h|--help} | <options>] [<arguments>]
+#//Usage: ${_name} [ {-d|--debug} ] [ {-h|--help} | <options> ] [<arguments>]
+#//
 #//Description: ${_description}
+#//
 #//Examples: ${_name} foo; ${_name} --debug bar
+#//
 #//Options:
 #//	-d --debug	Enable debug mode
 #//	-h --help	Display this help message

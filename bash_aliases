@@ -25,14 +25,14 @@ alias :q='exit'
 alias x='exit'
 alias Q='exit'
 alias ra='ranger'
-alias gh='cd ~ && pwd; ls'
-alias gu='cd .. && pwd; ls'
-alias gb='cd ~/bin && pwd; ls'
-alias gd='cd ~/devel && pwd; ls'
-alias gr='cd / && pwd; ls'
-alias ge='cd /etc && pwd; ls'
-alias gU='cd /usr && pwd; ls'
-alias gv='cd /var && pwd; ls'
+alias gh='cd ~ && pwd; ls -F'
+alias gu='cd .. && pwd; ls -F'
+alias gb='cd ~/bin && pwd; ls -F'
+alias gd='cd ~/devel && pwd; ls -F'
+alias gr='cd / && pwd; ls -F'
+alias ge='cd /etc && pwd; ls -F'
+alias gU='cd /usr && pwd; ls -F'
+alias gv='cd /var && pwd; ls -F'
 alias gt=''
 alias gT=''
 
@@ -70,7 +70,7 @@ alias gcob='git checkout -b'
 alias gdelb='git branch -d'
 alias gp='git push'
 
-#git-issue
+# git-issue
 alias gih='git issue help | $PAGER'
 alias gil='git issue list'
 
@@ -83,3 +83,10 @@ alias err='echo $_:$?'
 
 # Check files for trailing whitespace
 alias ws='grep --binary-files=without-match '\''\s$'\'' * '
+
+# pathfinder
+alias pf='pathfinder'
+alias pfcd='cd $( pathfinder --show ) && pwd; ls -F'
+
+# binstall
+alias bu='binstall --update'

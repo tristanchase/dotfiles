@@ -220,6 +220,7 @@ nnoremap	#		#zz
 "}}}
 " Abbreviations"{{{
 :ia	pfbn	printf "%b\n"
+:ia	todo	TODO
 ":ab	shebang	#! /bin/bash
 " EndAbbreviations
 "}}}

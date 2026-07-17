@@ -149,7 +149,9 @@ function __fatal__   { __logger__; echo "$(date -Iseconds) [FATAL]   $*" | tee -
 #function __options__
 
 function __pager__ {
-  ${PAGER:-more -e}
+  #${PAGER:-more -e}
+  #more -e
+  less -FXRM
 }
 
 

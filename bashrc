@@ -212,7 +212,7 @@ for _key in $_keylist; do
 done
 
 # Set default pager to less with desired options
-export PAGER="less -FXR"
+#export PAGER='/usr/bin/less -FXRM'
 
 # Run update-notifier on login
 if [[ -f ${HOME}/bin/update-notifier.sh ]]; then

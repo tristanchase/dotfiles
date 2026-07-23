@@ -89,12 +89,15 @@ function __ctrl_c__ {
 
 function __debugger__ {
 # Low-tech debug mode
-	set -o verbose
-	set -o xtrace
-	_debug_file="${HOME}/script-logs/$(basename "${0}")/$(basename "${0}")-$(date -Iseconds).debug.$$"
-	mkdir -p $(dirname ${_debug_file})
-        touch ${_debug_file}
-	exec > >(tee "${_debug_file:-}") 2>&1
+	#set -o verbose
+	#set -o xtrace
+	#_debug_file="${HOME}/script-logs/$(basename "${0}")/$(basename "${0}")-$(date -Iseconds).debug.$$"
+	#mkdir -p $(dirname ${_debug_file})
+        #touch ${_debug_file}
+	#exec > >(tee "${_debug_file:-}") 2>&1
+	export PS4='+ [${BASH_SOURCE}:${LINENO}]: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
+	set -x
+	exec > >(tee debug) 2>&1
 	shift
 }
 

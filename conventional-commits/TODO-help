@@ -1,0 +1,23 @@
+Use this format in script TODO lists:
+
+- [ ] <type>[(<scope>)]: item as commit message (type-item)
+
+Core Types
+
+feat: Adds a new feature to the code.
+fix: Fixes a bug in the code.
+chore: Handles routine tasks or maintenance that do not change production code.
+
+Supporting Types
+
+docs: Changes only to documentation files like the README.
+style: Changes to code formatting, white space, or missing semicolons that do not change how the code works.
+refactor: Rewrites or restructures code without adding a feature or fixing a bug.
+perf: Code changes that make the program run faster.
+test: Adds new tests or fixes old ones.
+build: Changes that affect the build system or external dependencies.
+ci: Changes to continuous integration files and scripts.
+revert: Rolls back a previous commit.
+
+TODO
+- [ ] figure out how to add conventional commits to commit msgs

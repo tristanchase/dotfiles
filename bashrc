@@ -215,6 +215,6 @@ done
 #export PAGER='/usr/bin/less -FXRM'
 
 # Run update-notifier on login
-if [[ -f ${HOME}/bin/update-notifier.sh ]]; then
-	${HOME}/bin/update-notifier.sh
-fi
+#if [[ -f ${HOME}/bin/update-notifier.sh ]]; then
+#	${HOME}/bin/update-notifier.sh
+#fi

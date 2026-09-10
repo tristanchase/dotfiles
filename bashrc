@@ -124,10 +124,28 @@ function __updates_available__ {
 	fi
 }
 
+function __print_updates__ {
+	_cache_path="${HOME}/.cache" && mkdir -p "${_cache_path}"
+	_cache_file="${_cache_path}/updates-available"
+	_cache_icon="${_cache_path}/updates-available.icon"
+
+	local u=
+	read u < "$_cache_file"
+
+	if [[ -n "$u" ]]; then
+		if [[ "$u" -gt 0 ]]; then
+			printf "[updates:"$u"]" > "${_cache_icon}"
+		elif [[ "$u" = "0" ]] && [[ -e "${_cache_icon}" ]]; then
+			rm -f "${_cache_icon}"
+		fi
+	fi
+	__updates_available__
+}
+
 
 # Prompt
 if [ "$color_prompt" = yes ]; then
-	PS1='$?:${debian_chroot:+($debian_chroot)}'$bold_red'$(__reboot_required__)'$bold_white'$(__updates_available__)'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
+	PS1='$?:${debian_chroot:+($debian_chroot)}'$bold_red'$(__reboot_required__)'$bold_white'$(__print_updates__)'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}'$COLOR_BOLD_MAGENTA'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$COLOR_BOLD_GREEN'\u@\h'$COLOR_DEFAULT':'$COLOR_BOLD_BLUE'\w'$COLOR_BOLD_CYAN'$(__git_ps1 " (%s)")'$COLOR_DEFAULT'\n'$COLOR_DEFAULT'\$ '
 	#PS1='${debian_chroot:+($debian_chroot)}'$bold_magenta'[$TMUX_PANE/$TOPLVL/$SHLVL:$?]'$bold_green'\u@\h'$reset':'$bold_blue'\w'$bold_cyan'$(__git_prompt__)'$reset'\n'$COLOR_DEFAULT'\$ '
 else

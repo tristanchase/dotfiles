@@ -1,11 +1,17 @@
-#/bin/bash
+#!/usr/bin/env bash
 
 # update.sh
 # 2023-12-31
+
 source ~/.functions.sh
+
+trap __traperr__ ERR
+trap __ctrl_c__ INT
+trap __cleanup__ EXIT
 
 printf "%b\n" "coapt:"
 coapt --no-reboot
+update-notifier --update-cache
 
 printf "%b\n" "show-gits:"
 show-gits --upgrade

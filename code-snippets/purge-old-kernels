@@ -1,0 +1,3 @@
+Lifted from: https://askubuntu.com/questions/1406581/why-does-ubuntu-not-clean-out-old-kernel-module-files-in-lib-modules-when-old
+
+apt purge $(dpkg -l | grep "^rc\s*linux" | awk '{print $2}') --dry-run | less

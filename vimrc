@@ -213,6 +213,7 @@ nnoremap	<Space>ws	:%s/\s\+$//eg<CR><C-o>| " Find and kill trailing whitespace
 nnoremap	<Space>ww	<C-w>w
 nnoremap	<Space>th		:tab help |
 nnoremap	/		/\v
+vnoremap	//		y/\V<C-R>=escape(@", '/\')<CR><CR>| " Search for highlighted text in Visual Mode
 nnoremap	Y		y$
 nnoremap	*		*zz
 nnoremap	#		#zz

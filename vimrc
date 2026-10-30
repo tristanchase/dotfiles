@@ -161,8 +161,10 @@ inoremap	<leader>h	${HOME}
 nnoremap	<leader>kb	:!grep "^\w*map\!*\s" $MYVIMRC <bar> sort -k2 -k1 > ~/.vim/mappings.txt<CR>:tabe ~/.vim/mappings.txt<CR>| " Show mappings in this file
 nnoremap	<leader>n	:cnext<cr>
 nnoremap	<leader>p	:cprevious<cr>
-inoremap	<leader>se	#-----------------------------------
-nnoremap	<leader>se	i#-----------------------------------<esc>
+"inoremap	<leader>se	#-----------------------------------
+inoremap	<leader>se	<esc>VxO# ---------------------------------------------------------------------------
+"nnoremap	<leader>se	i#-----------------------------------<esc>
+nnoremap	<leader>se	i# ---------------------------------------------------------------------------<esc>
 inoremap	<leader>v	"${_}"<esc>hi
 inoremap	<leader>x	"$(_)"<esc>hi
 nnoremap	<leader>ws	:highlight TrailWS ctermbg=5<CR> :match TrailWS /\v\s+$/<CR>
@@ -222,6 +224,7 @@ nnoremap	#		#zz
 " Abbreviations"{{{
 :ia	pfbn	printf "%b\n"
 :ia	todo	TODO
+:ia	comblk	# ---------------------------------------------------------------------------
 ":ab	shebang	#! /bin/bash
 " EndAbbreviations
 "}}}

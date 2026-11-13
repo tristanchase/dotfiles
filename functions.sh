@@ -161,7 +161,7 @@ function __pager__ {
 function __reboot_option__ {
 	if [[ -f /var/run/reboot-required ]]; then
 		cat /var/run/reboot-required
-		printf "%b" "Would you like to reboot the system now? (y/N): "
+		printf "%b" "Would you like to reboot the system now? [y/N]: "
 		read _response
 
 		case ${_response:-} in
